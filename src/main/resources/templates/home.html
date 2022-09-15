@@ -42,13 +42,22 @@
         >
           Edit profile
         </button>
-        <div>
-          <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout" />
-          </form>
-        </div> 
+        <form th:action="@{/logout}" method="post">
+          <button
+            type="submit"
+            class="btn btn-outline-dark"
+            data-mdb-ripple-color="dark"
+            style="z-index: 1"
+          >
+            Logout
+          </button>
+        </form>
       </div>
-      <div class="ms-3" style="margin-top: 130px" data-th-each="user: ${userInfo}">
+      <div
+        class="ms-3"
+        style="margin-top: 130px"
+        data-th-each="user: ${userInfo}"
+      >
         <h5 data-th-text="${user}"></h5>
         <p>New York</p>
       </div>
@@ -107,12 +116,9 @@
                 style="padding: 0.9%"
                 required
               />
-              <button
-                type="submit"
-                class="btn btn-primary"
-              >
-              <i class="bi bi-search"></i>              
-            </button>
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i>
+              </button>
             </form>
           </div>
         </div>

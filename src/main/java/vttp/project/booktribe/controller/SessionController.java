@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SessionController {
 
-    @GetMapping("/")
+    @GetMapping(path="/")
     public String getLoginPage() {
-        return "loginPage";
+        return "login";
+    }
+
+    @GetMapping(path="/register")
+    public String getRegisterPage() { 
+        return "register";
     }
 
     @GetMapping(path="/goals")
     public String getGoalsPage() { 
-        return "goalsPage";
+        return "goals";
     }
 
 
@@ -34,13 +39,23 @@ public class SessionController {
 		if (userInfo == null) {
 			userInfo = new ArrayList<>();
 		}
+
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("sessionId", session.getId());
         System.out.println(userInfo);
 
-		return "homePage";
+		return "home";
 	}
 
+    @PostMapping("/register")
+    public String register() { 
+        return "register";
+    }
+
+    @PostMapping("/")
+    public String registerAccount() { 
+        return "redirect:/";
+    }
 
 	@PostMapping("/home")
 	public String home(@RequestParam("username") String msg, HttpServletRequest request) {
@@ -60,43 +75,5 @@ public class SessionController {
 		request.getSession().invalidate();
 		return "redirect:/";
 	}
-
-    // @GetMapping("/")
-    // public String loginPage() {
-    //     return "loginPage";
-    // }
-
-    // @PostMapping("/homePage")
-    // public String login(@RequestParam("email") String user, HttpServletRequest request) {
-    //     //? Get the user from request session
-    //     List<String> userDetails = (List<String>) request.getSession().getAttribute("USER_SESSION");
-
-    //     //? Check if user is present in session
-    //     if (user == null) {
-    //         userDetails = new ArrayList<>();
-
-    //         //? if user is not present in session, set user details in the request session
-    //         request.getSession().setAttribute("USER_SESSION", userDetails);
-    //     }
-    //     userDetails.add(user);
-    //     request.getSession().setAttribute("USER_SESSION", userDetails);
-    //     return "redirect:/homePage";
-    // }
-    
-    // @GetMapping("/homePage")
-    // public String homePage(Model model, HttpSession session) {
-    //     List<String> user = (List<String>) session.getAttribute("USER_SESSION");
-    //     model.addAttribute("userSession", user!=null? user:new ArrayList<>());
-    //     return "homePage";
-    // }
-
-    // @PostMapping("/logout")
-    // public String logout(HttpServletRequest request) {
-    //     //? invalidate the session and clear the data from Redis database
-    //     request.getSession().invalidate();
-
-    //     return "redirect:/loginPage";
-        
-    // }
 
 }
