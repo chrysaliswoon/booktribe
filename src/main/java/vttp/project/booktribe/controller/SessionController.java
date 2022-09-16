@@ -30,6 +30,11 @@ public class SessionController {
         return "goals";
     }
 
+	@GetMapping(path="/tribe")
+    public String getBookTribe() { 
+        return "tribe";
+    }
+
 
 	@GetMapping("/home")
 	public String getHomePage(Model model, HttpSession session) {
@@ -73,6 +78,7 @@ public class SessionController {
 	@PostMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
+		System.out.println("User has been logged out");
 		return "redirect:/";
 	}
 
