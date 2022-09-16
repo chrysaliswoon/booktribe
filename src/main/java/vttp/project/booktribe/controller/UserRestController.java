@@ -15,23 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import vttp.project.booktribe.model.User;
 import vttp.project.booktribe.repository.UserRepository;
-import vttp.project.booktribe.service.UserService;
 
 @RestController
 @RequestMapping(path = "/api/user")
 public class UserRestController {
 
     @Autowired
-    // private UserService userSvc;
     private UserRepository userRepo;
 
     // ? CREATE new user data
-    // @PostMapping
-    // public User createUser(@RequestBody User user, Model model) {
-    //     System.out.println("User data: " + user);
-    //     return userRepo.createUser(user);
-    // }
-
     @PostMapping(path = "/api/user")
     public User createUser(@RequestBody User user) {
         return userRepo.createUser(user);
