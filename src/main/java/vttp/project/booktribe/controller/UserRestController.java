@@ -25,15 +25,19 @@ public class UserRestController {
     // private UserService userSvc;
     private UserRepository userRepo;
 
-    //? CREATE new user data
-    @PostMapping
-    public User createUser(@RequestBody User user, Model model) {
+    // ? CREATE new user data
+    // @PostMapping
+    // public User createUser(@RequestBody User user, Model model) {
+    //     System.out.println("User data: " + user);
+    //     return userRepo.createUser(user);
+    // }
 
+    @PostMapping(path = "/api/user")
+    public User createUser(@RequestBody User user) {
         return userRepo.createUser(user);
     }
 
-
-    //? READ user data
+    // ? READ user data
     @GetMapping
     public List<User> getAllUsers() {
         return userRepo.findAllUser();
@@ -44,15 +48,12 @@ public class UserRestController {
         return userRepo.findUserByEmail(email);
     }
 
+    // ? UPDATE user data
 
-    //? UPDATE user data
-
-
-    //? DELETE user data
+    // ? DELETE user data
     @DeleteMapping("/{email}")
     public String deleteUser(@PathVariable String email) {
         return userRepo.deleteUser(email);
     }
-    
-    
+
 }

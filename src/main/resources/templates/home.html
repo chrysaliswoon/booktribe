@@ -22,14 +22,15 @@
     />
     <title>Book Tribe</title>
   </head>
-  <body>
+  <body >
     <div
       class="rounded-top text-white d-flex flex-row"
       style="background-color: #000; height: 200px"
+      data-th-each="user: ${userDetails}"
     >
       <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px">
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+        data-th-src="@{${user.profile}}"
           alt="Generic placeholder image"
           class="img-fluid img-thumbnail mt-4 mb-2"
           style="width: 150px; z-index: 1"
@@ -56,10 +57,9 @@
       <div
         class="ms-3"
         style="margin-top: 130px"
-        data-th-each="user: ${userInfo}"
       >
-        <h5 data-th-text="${user}"></h5>
-        <p>New York</p>
+        <h5 data-th-text="${user.name}"></h5>
+        <p data-th-text="${user.email}"></p>
       </div>
     </div>
     <div class="p-4 text-black" style="background-color: #f8f9fa">
