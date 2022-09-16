@@ -24,7 +24,7 @@ public class UserRestController {
     private UserRepository userRepo;
 
     // ? CREATE new user data
-    @PostMapping(path = "/api/user")
+    @PostMapping
     public User createUser(@RequestBody User user) {
         return userRepo.createUser(user);
     }
