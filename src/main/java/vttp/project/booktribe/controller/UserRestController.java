@@ -3,7 +3,10 @@ package vttp.project.booktribe.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +28,15 @@ public class UserRestController {
 
     // ? CREATE new user data
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userRepo.createUser(user);
+    public String createUser(@RequestBody User user) {
+        userRepo.createUser(user);
+        System.out.println("User details" + user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/createUser/success")
+    public ResponseEntity<String> getSuccess() {
+        return new ResponseEntity<String>("Congratulation! You're part of the Book Tribe now!", HttpStatus.OK);
     }
 
     // ? READ user data

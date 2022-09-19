@@ -20,28 +20,28 @@ public class AppConfig {
     @Value("${spring.redis.port}")
     private Integer redisPort;
 
-    @Value("${spring.redis.database}")
-    private Integer redisDatabase;
+    // @Value("${spring.redis.database}")
+    // private Integer redisDatabase;
 
-    @Value("${spring.redis.username}")
-    private String redisUsername;
+    // @Value("${spring.redis.username}")
+    // private String redisUsername;
 
-    @Value("${REDIS_PASSWORD}")
-    private String redisPassword;
+    // @Value("${REDIS_PASSWORD}")
+    // private String redisPassword;
 
     @Bean 
     public JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
         redisConfig.setPort(redisPort);
-        redisConfig.setDatabase(redisDatabase);
-        redisConfig.setUsername(redisUsername);
-        redisConfig.setPassword(redisPassword);
+        // redisConfig.setDatabase(redisDatabase);
+        // redisConfig.setUsername(redisUsername);
+        // redisConfig.setPassword(redisPassword);
 
         return new JedisConnectionFactory(redisConfig);
     }
 
-    @Bean ("redis")
+    @Bean("redis")
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());

@@ -25,6 +25,8 @@ public class UserService {
     //? API URL
     private static String userProfileURL = "https://vttp-booktribe.herokuapp.com/api/user/{id}";
 
+    private ArrayList<User> userProfile = new ArrayList<>();
+
     //? Get user profile details
     public List <User> userProfile(String email) {
         
@@ -63,7 +65,7 @@ public class UserService {
         //? Reads payload as Array of JSON object
         JsonObject profileObj = jsonReader.readObject();
 
-        ArrayList<User> userProfile = new ArrayList<>();
+        
             String user_name = profileObj.getString("name");
             String user_email = profileObj.getString("email");
             String user_profile = profileObj.getString("profile");
@@ -73,5 +75,24 @@ public class UserService {
         return userProfile;
         
     }
+
+    // public List<User> userLogin(String email) {
+
+    //     //? Checks if userprofile exists
+    //     boolean profileExists;
+
+
+
+    //     // if (email == user_email) {
+    //     //     profileExists = true;
+    //     //     System.out.println("Account exists!");
+    //     // } else {
+    //     //     profileExists = false;
+    //     //     System.out.println("Account does not exist!");
+    //     // }
+
+    //     return userDetails;
+
+    // }
     
 }

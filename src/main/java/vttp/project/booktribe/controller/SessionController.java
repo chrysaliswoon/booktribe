@@ -26,11 +26,16 @@ public class SessionController {
 
     @GetMapping(path="/")
     public String getLoginPage() {
+		// List<User> userLogin = userSvc.userProfile(id);
+	
         return "login";
     }
 
     @GetMapping(path="/register")
-    public String getRegisterPage() { 
+    public String getRegisterPage(Model model) { 
+		User user = new User();
+		model.addAttribute("user", user);
+		// System.out.println(user);
         return "register";
     }
 
@@ -45,20 +50,20 @@ public class SessionController {
     }
 
 
-	@GetMapping(path = "/{id}")
-	public String getHomePage(Model model, @PathVariable String id, HttpSession session) {
-		List<User> userDetails = userSvc.userProfile(id);
-		// List<String> userInfo = (List<String>) session.getAttribute("USER_SESSSION");
+	// @GetMapping(path = "/{id}")
+	// public String getHomePage(Model model, @PathVariable String id, HttpSession session) {
+	// 	List<User> userDetails = userSvc.userProfile(id);
+	// 	// List<String> userInfo = (List<String>) session.getAttribute("USER_SESSSION");
 
-		// if (userInfo == null) {
-		// 	userInfo = new ArrayList<>();
-		// }
+	// 	// if (userInfo == null) {
+	// 	// 	userInfo = new ArrayList<>();
+	// 	// }
 
-		model.addAttribute("userDetails", userDetails);
-		// model.addAttribute("sessionId", session.getId());
-        // System.out.println(userDetails);
-        return "/home";
-	}
+	// 	model.addAttribute("userDetails", userDetails);
+	// 	// model.addAttribute("sessionId", session.getId());
+    //     // System.out.println(userDetails);
+    //     return "/home";
+	// }
 
     @PostMapping("/register")
     public String register() { 
