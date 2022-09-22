@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
@@ -29,8 +30,9 @@ public class AppConfig {
     // @Value("${REDIS_PASSWORD}")
     // private String redisPassword;
 
-    @Bean 
-    public JedisConnectionFactory jedisConnectionFactory() {
+    @Bean("redis")
+    public RedisTemplate<String, String> initRedisTemplate() {
+        //? Configure the Redis Database
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
         redisConfig.setPort(redisPort);
@@ -38,19 +40,45 @@ public class AppConfig {
         // redisConfig.setUsername(redisUsername);
         // redisConfig.setPassword(redisPassword);
 
-        return new JedisConnectionFactory(redisConfig);
-    }
+        //? Create instance of Jedis driver
+        JedisClientConfiguration jedisConfig = JedisClientConfiguration.builder().build();
 
-    @Bean("redis")
-    public RedisTemplate<String, Object> redisTemplate() {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+        //? Create a factory for Jedis connection
+        JedisConnectionFactory jedisFac = new JedisConnectionFactory(redisConfig, jedisConfig);
+
+        jedisFac.afterPropertiesSet();
+
+        //? Create RedisTemplate and configure it
+        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(jedisFac);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashKeySerializer(new JdkSerializationRedisSerializer());
-        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        redisTemplate.setEnableTransactionSupport(true);
-        redisTemplate.afterPropertiesSet();
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+
         return redisTemplate;
     }
+
+    // @Bean 
+    // public JedisConnectionFactory jedisConnectionFactory() {
+    //     RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
+    //     redisConfig.setHostName(redisHost);
+    //     redisConfig.setPort(redisPort);
+    //     // redisConfig.setDatabase(redisDatabase);
+    //     // redisConfig.setUsername(redisUsername);
+    //     // redisConfig.setPassword(redisPassword);
+
+    //     return new JedisConnectionFactory(redisConfig);
+    // }
+
+    // @Bean("redis")
+    // public RedisTemplate<String, Object> redisTemplate() {
+    //     RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+    //     redisTemplate.setConnectionFactory(jedisConnectionFactory());
+    //     redisTemplate.setKeySerializer(new StringRedisSerializer());
+    //     redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+    //     redisTemplate.setHashKeySerializer(new JdkSerializationRedisSerializer());
+    //     redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+    //     redisTemplate.setEnableTransactionSupport(true);
+    //     redisTemplate.afterPropertiesSet();
+    //     return redisTemplate;
+    // }
 }

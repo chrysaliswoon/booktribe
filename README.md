@@ -1,4 +1,8 @@
-# bookshelf-app
+# BookTribe - bookshelf-app
+
+Note: This is a updated and cleaner version of a previous one: https://github.com/chrysaliswoon/bookshelf-app 
+
+This project is my submission for an assignment where we were tasked to design and develop an application of our choice using what we have learnt in our Server Side Foundation module.
 
 | Fulfilled? | Project Requirements | Description |
 | ------------- |:-------------:| -----:|
@@ -12,3 +16,6 @@
 | :white_check_mark:| REST endpoints must not be those that have been discussed or used in class or assessment | API used is the Google Books API |
 | :white_check_mark:| Use Bootstrap in your HTML | A combination of CSS stylesheet and Bootstrap in HTML was used to style the pages |
 | :white_check_mark:|Redis database must be runnign in the 'cloud'. Can provision an instance from Redis Labs or any other cloud provider| ?? |
+
+
+# Breakdown of the Project

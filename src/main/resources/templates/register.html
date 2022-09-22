@@ -11,7 +11,6 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link
       th:href="@{https://fonts.googleapis.com/css2?family=Alegreya&display=swap}"
       rel="stylesheet"
@@ -36,16 +35,32 @@
                       Sign up
                     </p>
 
-                    <form class="mx-1 mx-md-4" action="/api/user" method="POST" data-th-object="${user}">
+                    <form class="mx-1 mx-md-4" action="/createAccount" method="POST">
                       <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                           <label class="form-label" for="name"
-                            >Display Name</label
+                            >name</label
                           >
                           <input
                             type="text"
                             id="name"
+                            name="name"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="username"
+                            >Username</label
+                          >
+                          <input
+                            type="text"
+                            id="username"
+                            name="username"
                             class="form-control"
                           />
                         </div>
@@ -60,6 +75,7 @@
                           <input
                             type="email"
                             id="email"
+                            name="email"
                             class="form-control"
                           />
                         </div>
@@ -74,34 +90,11 @@
                           <input
                             type="password"
                             id="password"
+                            name="password"
                             class="form-control"
                           />
                         </div>
                       </div>
-
-                      <!-- <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4cd" class="form-control" />
-                      <label class="form-label" for="form3Example4cd">Repeat password</label>
-                    </div>
-                  </div> -->
-
-                      <!-- <div
-                        class="form-check d-flex justify-content-center mb-5"
-                      >
-                        <input
-                          class="form-check-input me-2"
-                          type="checkbox"
-                          value=""
-                          id="form2Example3c"
-                        />
-                        <label class="form-check-label" for="form2Example3">
-                          I agree all statements in
-                          <a href="#!">Terms of service</a>
-                        </label>
-                      </div> -->
-
                       <div
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >

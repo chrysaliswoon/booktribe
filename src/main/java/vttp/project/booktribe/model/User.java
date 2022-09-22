@@ -1,39 +1,73 @@
 package vttp.project.booktribe.model;
 
-import java.io.Serializable;
+import java.io.StringReader;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
-
-import lombok.AllArgsConstructor;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@RedisHash("User")
-public class User implements Serializable{
+public class User{
 
-    static final long serialVersionUID = 8880220379965714697L;
-
-    @Id
     private String name;
     private String username;
     private String email;
     private String password;
     private String profile;
 
-    public static User createUserProfile(String name, String email, String profile) {
-        User userData = new User();
+    public User() {
+
+    }
+
+    public User (String name, String username, String email, String password) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public static User createUser(String name, String username, String email, String password) {
+        User userData = new User(name, username, email, password);
 
         userData.setName(name);
+        userData.setUsername(username);
         userData.setEmail(email);
-        userData.setPassword(profile);
+        userData.setPassword(password);
 
+        
         return userData;
     }
 
+
+    //? Convert Model --> JSON object
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+            .add("name", name)
+            .add("username", username)
+            .add("email", email)
+            .add("password", password)
+
+            .build();
+    }
+
+    public static User create(JsonObject jsonObj) {
+        User user = new User();
+        user.setName(jsonObj.getString("name"));
+        user.setUsername(jsonObj.getString("username"));
+        user.setEmail(jsonObj.getString("email"));
+        user.setPassword(jsonObj.getString("password"));
+
+        return user;
+    }
+
+    //? Convert JSON object --> String
+    public static User create(String jsonStr) {
+        StringReader strReader = new StringReader(jsonStr);
+        JsonReader jsReader = Json.createReader(strReader);
+
+        return create(jsReader.readObject());
+    }
 
     
 }
