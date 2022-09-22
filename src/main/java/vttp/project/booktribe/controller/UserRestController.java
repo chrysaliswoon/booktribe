@@ -26,36 +26,36 @@ public class UserRestController {
     @Autowired
     private UserRepository userRepo;
 
-    // ? CREATE new user data
-    @PostMapping
-    public String createUser(@RequestBody User user) {
-        userRepo.createUser(user);
-        System.out.println("User details" + user);
-        return "redirect:/";
-    }
+    // // ? CREATE new user data
+    // @PostMapping
+    // public String createUser(@RequestBody User user) {
+    //     userRepo.createUser(user);
+    //     System.out.println("User details" + user);
+    //     return "redirect:/";
+    // }
 
-    @GetMapping("/createUser/success")
-    public ResponseEntity<String> getSuccess() {
-        return new ResponseEntity<String>("Congratulation! You're part of the Book Tribe now!", HttpStatus.OK);
-    }
+    // @GetMapping("/createUser/success")
+    // public ResponseEntity<String> getSuccess() {
+    //     return new ResponseEntity<String>("Congratulation! You're part of the Book Tribe now!", HttpStatus.OK);
+    // }
 
-    // ? READ user data
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userRepo.findAllUser();
-    }
+    // // ? READ user data
+    // @GetMapping
+    // public List<User> getAllUsers() {
+    //     return userRepo.findAllUser();
+    // }
 
-    @GetMapping("/{email}")
-    public User findUser(@PathVariable String email) {
-        return userRepo.findUserByEmail(email);
-    }
+    // @GetMapping("/{email}")
+    // public User findUser(@PathVariable String email) {
+    //     return userRepo.findUserByEmail(email);
+    // }
 
-    // ? UPDATE user data
+    // // ? UPDATE user data
 
-    // ? DELETE user data
-    @DeleteMapping("/{email}")
-    public String deleteUser(@PathVariable String email) {
-        return userRepo.deleteUser(email);
-    }
+    // // ? DELETE user data
+    // @DeleteMapping("/{email}")
+    // public String deleteUser(@PathVariable String email) {
+    //     return userRepo.deleteUser(email);
+    // }
 
 }

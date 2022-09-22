@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -23,6 +24,17 @@ import vttp.project.booktribe.repository.UserRepository;
 
 @Service
 public class UserService {
+
+    @Autowired
+    private UserRepository userRepo;
+
+    public List<User> createProfile(String email, String payload) {
+        userRepo.create(email, payload);
+        String successMsg = "New user has been created";
+
+        
+        return null;
+    }
 
     // @Autowired
     // private UserRepository userRepo;
