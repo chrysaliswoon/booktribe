@@ -21,14 +21,14 @@ public class AppConfig {
     @Value("${spring.redis.port}")
     private Integer redisPort;
 
-    // @Value("${spring.redis.database}")
-    // private Integer redisDatabase;
+    @Value("${spring.redis.database}")
+    private Integer redisDatabase;
 
-    // @Value("${spring.redis.username}")
-    // private String redisUsername;
+    @Value("${spring.redis.username}")
+    private String redisUsername;
 
-    // @Value("${REDIS_PASSWORD}")
-    // private String redisPassword;
+    @Value("${REDIS_PASSWORD}")
+    private String redisPassword;
 
     @Bean("redis")
     public RedisTemplate<String, String> initRedisTemplate() {
@@ -36,9 +36,9 @@ public class AppConfig {
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
         redisConfig.setPort(redisPort);
-        // redisConfig.setDatabase(redisDatabase);
-        // redisConfig.setUsername(redisUsername);
-        // redisConfig.setPassword(redisPassword);
+        redisConfig.setDatabase(redisDatabase);
+        redisConfig.setUsername(redisUsername);
+        redisConfig.setPassword(redisPassword);
 
         //? Create instance of Jedis driver
         JedisClientConfiguration jedisConfig = JedisClientConfiguration.builder().build();
