@@ -50,11 +50,8 @@ public class RegisterController {
         String payload = userObj.toString();
 
         //? Store data in Redis Database
-
-        List<User> createUserProfile = userSvc.createProfile(email, payload);
-
-        System.out.print(createUserProfile);
-
+        
+        userSvc.createProfile(email, payload);
 
         return "redirect:/";
     } 

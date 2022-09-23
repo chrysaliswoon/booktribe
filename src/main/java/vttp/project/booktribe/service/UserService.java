@@ -28,11 +28,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    public List<User> createProfile(String email, String payload) {
+    public void createProfile(String email, String payload) {
         userRepo.create(email, payload);
-        String successMsg = "New user has been created";
+        // String successMsg = "New user has been created";
 
-        return null;
+        // return successMsg;
     }
 
     // //? API URL

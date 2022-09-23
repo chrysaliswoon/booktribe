@@ -21,7 +21,7 @@ public class BookController {
     @GetMapping("/search")
     public String getBookResults(Model model, @RequestParam String book) { 
         List<Book> bookResults = bookSvc.exploreBooks(book);
-        model.addAttribute("book", book);
+        model.addAttribute("book", book.toUpperCase());
         model.addAttribute("results", bookResults);
 
         return "explore";
