@@ -33,7 +33,7 @@ public class UserService {
         userRepo.create(email, payload);
     }
 
-    public void checkProfile(String email, String password) {
+    public JsonObject login(String email, String password) {
 
         //? Get Redis Value from the Database
         Optional<String> redisValue = userRepo.findUserByEmail(email);
@@ -43,13 +43,12 @@ public class UserService {
 
         //? Convert the String to a JSON 
         JsonObject userJson = toJson(payload);
-        System.out.println(userJson);
+        
+        
+        return userJson;
 
         //? Check if the key (email) exists in Redis
 
-
-        
-        
 
         //? Check the email AND password is 
 
@@ -65,6 +64,10 @@ public class UserService {
 
         return createJson;
 
+    }
+
+    public List<User> userProfile() {
+        return null;
     }
     
 }

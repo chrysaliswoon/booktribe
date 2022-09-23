@@ -35,7 +35,7 @@ public class LoginController {
         String password = form.getFirst("password");
 
         //? Check with Redis Database
-        userSvc.checkProfile(email, password);
+        userSvc.login(email, password);
 
         return "redirect:/home";
     }

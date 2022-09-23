@@ -22,149 +22,176 @@
     />
     <title>Book Tribe</title>
   </head>
-  <body >
-    <div
-      class="rounded-top text-white d-flex flex-row"
-      style="background-color: #000; height: 200px"
-      data-th-each="user: ${userDetails}"
-    >
-      <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px">
-        <img
-          src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUSFRgVFRUYGBgYGBgYGBgYGBgYGBgYGBgZGRgYGBgcIS4lHB4rHxgYJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QGhISGDQhISE0MTQxNDE0NDQ0NDE0NDQ0NDQ0NDQ0NDQxNDQ0NDQ0NDQ0NDQxNDQ0NDQ0PzExNDQ0Mf/AABEIAOEA4AMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAFAQIDBAYABwj/xAA8EAACAQIDBQYFAwIFBAMAAAABAgADEQQhMQUSQVFxImGBkaGxBhMywfBC0eFi8SNykqKyFDNSghUkQ//EABkBAAMBAQEAAAAAAAAAAAAAAAECAwAEBf/EACERAQEBAQACAwACAwAAAAAAAAABAhEhMQMSQSJRMmFx/9oADAMBAAIRAxEAPwArVQG4IuDkRzB1meqUzTcry9RwM0SEm4YWZSVYciNZQ2nh94bw1X/j/B9zPOzXXYbhKl5f3AYGoPaFsNWvDYEQV6JEqsIadQRBmJpbs0MqtIyY9mkLGMziZHXzUiczRjNDIFAK4ziKssYtLGRU50ZqGojrOVHMXA6XIH3mr+Cx/wB09yD1aZTGJ2DbgL+Wc1nwaexUbnuezmUhNeqOg9sePsZaA0lHe7Q6j1yl9Y8TPw3/AHV8f+J/eM+bvszf1Mv+lio9oiPuvvcs/KVdlHssDqrsPM3+8p8c/l3/AEXd/jxeEURQIoE6XOQCOAnARQIWcBHqJwEeomMVRHqIiiSKJmKojgJwEkVYtYJ25hdx/mjQ2V+uiv8AY+EE4qqqAs5AXiWNh0hX452/SwilDZ6jqbJ3Hi3ITx3HYx6pu7ljoo4Adwng4xa9a6g/jduUqZIS720tkPEmCMT8TVmyTdQdwufM/tA9VhoNPeNAnTMRK6q422MSf/3fP+sj2ldsdUvf5j3/AM7fvIWjDHmZ/RLaI09tVl/WT1z/AJhAfExtmlz3NYe0zkkp073muM38aas/Wuwe1FqC9reN5ZLzDqp4QtgMU4Aubg6X1A6xLjno810WxQvnIEEkFTeGlolMZzZ8DYlalcQx8INu0HvrvhPFAQZUoJedhKpp1zSH0tdwO9goPqrecrlLUaQPCamCacLUM1HSUiVdaU8B2ajoeIDDwyb1tL4EoVz8uqj8Cd09G09byuL5T16FFEeBEQSULOhE0LHBY4LHWmMaFjgsUCOUQlKojwIqrHKIDOUSVREAj1EzPnrHbQes7O7FmY3ZibkkyqanHwEYIrTy5HodMMfb9h4REW5kn2/AIxUe7EK3kwpk5DWNqgAG3DLxmCoFW5luhRLWUak/wB5yKkntCWynCne5Z+JFh6XhoyeT8fhBTQKNbDxJOs1GC+HU+Ul/r3VO9yJAuO+CDRLpY/U7U16XcG3pPRadLKT13i2ZOvPMRh2puUYWPoRzHdG09Zs9t7L+ahAycZoe/l0MxamxzFjxHIjIjzglDU4K4YSttZfl1aFXQbxRv/Ybw9n85PhGk22aHzKDgagb69U7VvGxHjKZqeoM0dITwhyt+ZwHsbECpSR+ajzhfDNn1ylYjpdtKW06O8h6Hz1HsR4y/EdLi0eEpmzq/wAxFbjax6jI+ol4QJs19x2TQN2l6/qHp6Q2k6JexG+zhHol40SRRCxgEkVZwEeohKVRJFWKqx4WZiKskCxVWPAi2mj5oprpG1JMTaVnM86PQp1PSSoOPj9lkV8gOf5+8IUKe6N4+H2/OkJTX7C9+pPISoy33RzzkmJYk24mORbsTyjMRxketvACFdmYK5F+OfgPwSpTo3KDmc/c+8OUgVBYAmw4d383i6p8wVw+BVnojm5Y9EQn3Imsp0d3Sef4HaVYsaiKqqg3buTlvkC9l6DjNRsXbT1Kho1VXftdWQ3RhYE65jIj1m5eD9p3g+6ZTC/EuHVKpZbdrMjkwyPnl6zdO1xMz8T4HeQOBmrAnoTun3iDfQBhXhmg1xM/RNjDOFeNC30g+HT8t6lA/oa6f5GzX0I8ppEMzOP/AMKvTrDRv8N/G5Q/8vSaJGlYhqDFNrgHnHSpgqmq+I+/53y3HiYVtVCvbXIg7y9RmR4jPzhbA4kVEV146jkeI85FWp76keIPIjQwXs2qaFTcOSObHkj6eRyHS3KWxr8T1P1p0EkCxlOWFWOUwJHqseFjlWEpVEkUTlWOURbWcBHhZwEeqxbTPmWsdfz8/mVKjSaq/v7f2lVjnOOO61dwdPffuH9pdxdQA2Gi+rGN2cm6hY8fYa/eU8S/qSYWdQO89+WZ9hJ6Wa/5j9/4kOGyRz3W/POXMIuajkfb8MzQSwNO7nuAA8f7TTYaglhfQTO4Oyi/E5+cJ06pYbgObndHjqfKTq2fQtsnY6VKbsbgOzXA0K3sARodJfwuwKdF1dd663tc5drW/OFMBRCIqjQC0sssweOh71CszHxbjq1PcKElHurXUFBe4tcZg6es0e1GCC8H0HWoCjC6tkQfeDvKa57GRS+phHCPG7UwBoPunMHNW5j9xIcO9poQTxtD5tNk4kdk8mGanzAkmxMZ8ympP1DssOIIyN5HSeUaTfJxH9FW56OPq87g+Jlc1LUaem9iDy/CIWUgi4gSm14QwFXVD1HTiPA+8pmo1cEp7Qw4Iv4H7H7S5FtfIx5eEsdsTF743G+tPVdL/by5w4gmPrlqD76i5X/cv5cH+JrMDiFqIrobqwuPuD33ylpexOziyFjwJyrHhYLSmhY8LHBY4LFtYgEcBFCx4WLaZ8qO2Xr5/wBpCNY552HF2A7x7zndw1UWyW7gPufvBmJa7W5C3lr6wliTfpl63B9CYIbMnrBGq7RW1Pqf2tL+DTK/5yg8PkB3/YAQlRyp3/PzKEYele5ymj2JTG8HPDIfczJ4UdqanZj2tJ1XLbYN8peIygTAVoYR7iaNfbKfEtdjUROFiepv+ec5MZSpbqubObWABOulyNPGHMfgkqW3hpoeIka4VLWYBtNQL5aRaeWcCPiht+ijAfS4ue5gfvaZWm8221cMtSkae9uZjO18wb6XmVxOxqqZ7u+v/kmfprDE77S0KkXH0TUQhfqHaT/Mug8cx4yphmhGnHlJqLOycYKiK3dn14wnScggjUflpmsKfk1yn6Kl3XkG/WPPP/2mhptKxDUHEYEAjQx6yhgKv6fEfcffxl5Y8TR4ulvLe2nqOIjfh/FfKc0WPZc3Q/1cvEeo75YUwbtLD3zFwR2lI1BGoHfoR4R80up1tkElAg3YeP8An0wx+tey4/qHHodYVQTWkIFjwseFigRLWcFigRQIoEW08y+SXOflFwxsw6xCL+V/SLTyYdZN1jNXl09FglRdiOZMvq+8Aeh9CJQcWbxI9bQQasFSDY8/sIVpDsWlPELdUfn2T1A/b2l1XG55fnvNWhcOmcN4CBsOYZwMnVMtHg3tC1KtAVFoUwz3EB6fi8eifUc+XHygt9pVHbsJYDmL3lnEYNWJa2Z43j8PTKaZjkSbHyhNn6s/t/F1GREsQ7uNMsrNbwhTZgNNAr1Lta9rWy/BK+PxdKm/bI3lW4HHtchx0mR2ttNq1TfF1Ft1RfMAEnMjneGQuuN62CpVScxv2+oai+l7a+MGPhmpsVYWI8iOY7pldkbRek5IJN8znrPQcI64umLizDQn2PdCSzwz20sMXS6/Wh316jUeIuPKXtm4kVEVxxElemVJBFiILwf+DWan+l+2nIXPaUdD6ER81DUH6bEWI1GYhek4YAjjAyGXMBVsd08cx14j7+cplKiMSrT3ltx1HWLecJSFU9l4v/p6wc5I/Zccs9fA59CZvUWYPF0he/BvRv5mj+Fsdvp8tvrp5Z6leHlp5Qa9dLZ5HQIoEcBFtJ9NMkAi2igRYOqTL5HpD1W3vf29Y3Q35H7x+H1UdfWNqj7e0VVew5y7rMP91x7mU62p6n0JljDt2Ljhf3lSse2w7/fOD9a+hWoQaGRzVw9uO6w3bjxsPERmHq5fnON2b2/8M/rVlB5G28n+4AeMgovNRl8imEq52hzCPMqzEG4l3CbR3dYlh5rja0GhLDvaZnBbTUjWXP8A5ADO8TinWop2MnFOAMLtIG2cKJjARrDKzNfGOxvmMtRPrC2twYLcgdczMYWDZ8Z6Ni62+R3TG/EGC+XVLqMn7Xdc6+sbOk9e1Gi2k3PwjUF8j4GYVJt/hQbpjX2aeqP7dpgBX433fuPaZna1AsgdPrpnfXmQPqXxHqBNXt8f4W9yZT55feAaTTTxUb5jsDiRURXGhF5bDHUajMdRAOCPyarUtEbtp0JzXwN/C0NK0rEdQao1d9Qw4+h4jzkwMGYGrutu8G07mt9wPTvhEGUiZzoGBU8fwGVcHijRqK/FDuuOY09R9paBlTHU/wBfMbrd44H87ozV6FQqB1DKbggEHuMlmS+E9o7p+Q51zpnnxK/ceM1shqcvFc3sLOnToDPkPCt2x+aCPxORt09hIcO3bXr/ABJ8atj+d8Bk2Cfhzv7A/aVaw7V+4emUdhzmPP7fvJqiXPifWYUmzqny6iPwV0J6Bhf0nV0s7bum81ul8vSTYbDmxbKyDeN9MiLDqYtGnvCLaMhEplpN/wBA/KXsGliMoaAULFuuHmeshUpPT7pWXaTjifOHdpoN1m7jMmY+fPtPV56G8DtViwBNu8TYYKqx1YkTzVTaaPZO1itlY+M2swc6bQOIO27USoirqwPDQLxBPW0qpjA5yMlNMNEmeH70JpYfMTW/DxzgNkAhjYWTTfpvxrNrU9/DPbULvf6bN9plsI9xNmguhB4gjzE882fWtkdRkeojorG2aBZA6fXTO+veP1r4jPqolvA4kVEVhxEcrwTgj8iq1L9D9tOQvqo6HLpaPmp6jQqf4PI8DC2Grb6g8dCOR4wGjy3hq+41+BsD3Hgft/aPKnYLgxWsRY6GREzt6OUOrKyMFDEMp3kbpnbqJvPh/awxKZ5Otg6+zDuMyGIpCotj1B5HnKuDxD0H+YuTr9a8GXj1B/mbWftGzeV6jOlDZW0UxKB06EHVTyMvSF8Lvj+h9Q8PcS1jdb35/Y/eVKZ7Q6yVnuov3/YfaAxcPC+HVCrb2u72SOY5ixv6QThhl4j3hVE7I6TVolDXXcAsL36nS5/bhHYRLEgyXCpJGUK4PP8AP3iU8EsLRBEsuoAjaSgDKdWcARFPwB2/V3UtzymZ5wltvE7724D3gyWzORDV7TZKjyOcI5BLB4sg6zQYXHXEyAaW8NiSItimdcaeriBcTQbDcXExCViwhLZ20TTYHheJxSaet4Y9mYP4gwpoYlrDsv218fqH+q/mJrNn4reVTwIBEGfGlHfoq41RwT/lbsn13fKaVOwJoVbyvtWiXTeX60O8vM/+S+I9QJVwdeX1eNPAU/Z+LFRFYcRn1hBWmbRvkVf6HuRyDcR638e6Habx4lYL4LEXG6TmNDzX9xp5S0WgRXIsRqNPzlCNCuHF/McjKSksWQ8hrJvaGzDQ/Y907eib0aAfg8a+GYOgAI+tOBHIjlyPCbvZe1aeIXeQ5j6lP1Ke/u7558+djoRof35iLRZqbB6bFWHI5HnbmO4waxNNNWPCwc5OdPznIE1lltP9PrnOd0JMOMvGHlpdkdIGwq/T1miwJDqRy9oKbM6iwy52k9elcdM5ewuE4yxVw2USqSKGHq9mVNp4rdQnjw6ycJusVgnbT8OEMnkNXwA1WuYyc86ViNdEiiJCDryfDPZ1PIj3kE4GZmixlAIQ65cxw6xyC4j8S28i2/VbyteMoNlF1OKZr0T4bqb+HTmLjyMLVEDoyMLqylSO4i0zHwjiOwU5MZp96LB17eb1qZo1Xpk33Ta/Mag+REv0qtxB/wAQ1P8A7VTqo/2LHYd4Sr2JpCohU5cVPJhofzgTO2Viyw3HydciOkajytjUKkVU1X6xzUcfD26RpSWNAryRKpU7w8RzEHYbEh1BHGWg0aUvBZKoYXB/OUdvQRTqlDceI5/zL6VgwuP7dZSa6nZxPvRQeEi3ou9G6zxRBnLLnLqR6AysmstPw6n0E5nQsYU+n5+0LbGq3crpfXof7QTSG6B3i/nJdm1d2sp7x5QWeDYv8v8Ar0GhTyyjjmJBhq40A0tJTEUBtpixvy9pndqZi80O1X1mU2jVvcRpCaobqZz6xy637vW0ZKROlESLEmAk4RIoMzNPgl3lQ/0A+Y/iRKLMw5E+V4uBq7tK4FyFyHOwjK+JJpa2uEJtlre/rNqdHN4O7D2ilNrMwFzxIE2FLaCEX31/1Ceb7KFNXXdpGpr9WYNuH4JqXw2GLEtQYMSbgEgDoAR7R8fD9oGt8CNu0/mV6jpYhd25BvvdkZj2y/8AGQYZ5ptnUcMtRCKbLcld4liAHUqbje5MZll7LFeRI8jabfx/UM66Io8lRpSR5MjyRkSn5D5fQxy/pPL9u7pDNKpcXg91DqVbQ/lx3ytha5pNuPp+luY5/uIehwdvFRiDcGx9+siR7x4MPQ4vUsSGyOR9D0MnvBbC8fTrMvG45H9401/Zbl5QglypwHU+cqprfpLNXl3DzziRQ+s9hbkqj7n1Mdgm7fh+0gxLZt1i4Rswe60GvVP8f+Ub3DVQAGPFf5z/ADjJ6uKsIJwD3pjxHrlOepwvEimvFqDadfI+cyeIqbzEwrtXEcIFMaJU/h1jZztEWPC0sQxTEaZiGcIkVBciYGhwy9i2l1t6SmagNOwP6Rb/ANW/aXMO2QEq4nDgOLZAi9hkL6ZRemkOw21KwYbgAscgFB95p8NtXHMMkB72UAnrZgPSCtlYcA6TYYX6Yc/JZ6a477ZzGbfxKHcqbibwOZQ6cbEE5wWj3N/GGfi7Db6IRwaxPcQb+wgAG0b7/b2X689CFOpLCPBlOpaW0eLRi+jx1aktRbHwI1B5iVkeWEeL0UGGxTU23H8DwI5juhlHBzEHVqS1BZvAjUHmJUp1XomzZqdDwP7Huh70OD4aPBlPD4lXGRlhXg6zzJBJ3Pa6W9ZAg0k1YZnvI8gI0ZC51kmGOXnIGOvWSU8vT1zg16Pj/Jp9j1uwRyPuP4nY2oAbwdsytYkcxOxlW4MWKfJ7DcY9zKy84+qQePXLT94waeQ+/wBoyVNjgY06zo0IeTEM6JMxskw4uwkZkuFNmvygYaR7C+kibEq7Ddztx4eEH16xbXTlHYE9qLc8h5fLT7P1E02GfKZfAHSaLDPlEilVviHOix5De8s5jUxQPcZtsf2kIPEGecuN0kcQSPLKUyloWRpYpvBmGq3ylsNDSwSp1JZR4NpvLSPFp15HjzZhYi4POVlaSK0VkL4ZkO8hJHLiOnOS4faPBvzwkqvEqUVfUZ8xkYehxiF/b7SXE6+ftOnSgKj6eJkx4dB7CdOi6Nj2uYTUfnOLiuPj7Tp0SK/J+BbReHj9jOnR0aYdZwnToxTp06dMxsfRizoGOaSYL6p06bXoc+2kwHCaHDaTp0lFzcT9J6Tz3F/W/wDmb3izpTKOnYbUdYQE6dGpYlpS5TnTohlhZIs6dFFIslWLOmrP/9k="
-          alt="Generic placeholder image"
-          class="img-fluid img-thumbnail mt-4 mb-2"
-          style="width: 150px; z-index: 1"
-        />
-        <button
-          type="button"
-          class="btn btn-outline-dark"
-          data-mdb-ripple-color="dark"
-          style="z-index: 1"
-        >
-          Edit profile
-        </button>
-        <form th:action="@{/logout}" method="post">
-          <button
-            type="submit"
-            class="btn btn-outline-dark"
-            data-mdb-ripple-color="dark"
-            style="z-index: 1"
-          >
-            Logout
-          </button>
-        </form>
-      </div>
-      <div
-        class="ms-3"
-        style="margin-top: 130px"
-      >
-        <h5 data-th-text="${user.name}"></h5>
-        <p data-th-text="${user.email}"></p>
-      </div>
-    </div>
-    <div class="p-4 text-black" style="background-color: #f8f9fa">
-      <div class="d-flex justify-content-end text-center py-1">
-        <div>
-          <p class="mb-1 h5">20</p>
-          <p class="small text-muted mb-0">Books</p>
-        </div>
-        <div class="px-3">
-          <p class="mb-1 h5">10</p>
-          <p class="small text-muted mb-0">Followers</p>
-        </div>
-        <div>
-          <p class="mb-1 h5">30</p>
-          <p class="small text-muted mb-0">Following</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-body p-4 text-black">
-      <div class="mb-5">
-        <p class="lead fw-normal mb-1">
-          What would you like to do today <span data-th-text="${user}"></span>?
-        </p>
-        <div class="row g-3" style="background-color: #f8f9fa">
-          <div class="col mb-3">
-            <form action="/goals" method="GET">
-              <button
-                type="submit"
-                class="btn btn-outline-dark"
-                data-mdb-ripple-color="dark"
-              >
-                Reading Goals
-              </button>
-            </form>
-          </div>
-          <div class="col mb-3">
-            <form action="/tribe" method="GET">
-              <button
-                type="submit"
-                class="btn btn-outline-dark"
-                data-mdb-ripple-color="dark"
-              >
-                Book Tribe
-              </button>
-            </form>
-          </div>
-          <div class="col mb-3">
-            <form action="/search" method="GET">
-              <input
-                type="text"
-                name="book"
-                id="book"
-                placeholder="Book Name"
-                style="padding: 0.9%"
-                required
-              />
-              <button type="submit" class="btn btn-primary">
-                <i class="bi bi-search"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <p class="lead fw-normal mb-0">Bookshelf</p>
-        <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
-      </div>
-      <div class="row g-5">
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1581527774i/41881472.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1457284880i/27220736.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1558590675i/45996732.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441586645i/26324.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441967961i/231262.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-      </div>
-    </div>
+  <body>
+    <main class="site-wrapper">
+      <div class="pt-table desktop-768">
+        <div class="pt-tablecell page-home relative" style="background-image: url(https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
+        background-position: center;
+        background-size: cover;">
+                        <div class="overlay"></div>
+                        <div class="page-title  home text-center">
+                            <h5 class="heading-page"> Welcome Back Chrysalis
+                            </h5>
+                          </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+    
+                                    <div class="hexagon-menu clear">
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/profile}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-universal-access"></i>
+                                                    </span>
+                                                    <span class="title">Profile</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>
+                                        </div>
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/goals}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-bullseye"></i>
+                                                    </span>
+                                                    <span class="title">Goals</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>
+                                        </div>
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/tribe}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-braille"></i>
+                                                    </span>
+                                                    <span class="title">Tribe</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>    
+                                        </div>
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/search}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-id-badge"></i>
+                                                    </span>
+                                                    <span class="title">Search</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>
+                                        </div>
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/inspire}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-life-ring"></i>
+                                                    </span>
+                                                    <span class="title">Inspire</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>
+                                        </div>
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/about}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-clipboard"></i>
+                                                    </span>
+                                                    <span class="title">About</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>
+                                        </div>
+                                        <div class="hexagon-item">
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <div class="hex-item">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                            <a  class="hex-content" th:href="@{/logout}">
+                                                <span class="hex-content-inner">
+                                                    <span class="icon">
+                                                        <i class="fa fa-map-signs"></i>
+                                                    </span>
+                                                    <span class="title">Logout</span>
+                                                </span>
+                                                <svg viewBox="0 0 173.20508075688772 200" height="200" width="174" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </main>
     <!-- Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
