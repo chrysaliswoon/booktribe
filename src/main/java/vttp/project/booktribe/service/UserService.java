@@ -32,12 +32,8 @@ public class UserService {
         userRepo.create(email, payload);
         String successMsg = "New user has been created";
 
-        
         return null;
     }
-
-    // @Autowired
-    // private UserRepository userRepo;
 
     // //? API URL
     // private static String userProfileURL = "https://vttp-booktribe.herokuapp.com/api/user";

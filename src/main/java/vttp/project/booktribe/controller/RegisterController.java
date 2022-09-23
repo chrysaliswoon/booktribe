@@ -18,7 +18,7 @@ import vttp.project.booktribe.service.UserService;
 
 @Controller
 @RequestMapping
-public class RegisterControlller {
+public class RegisterController {
 
     @Autowired
     private UserService userSvc;
