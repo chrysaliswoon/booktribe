@@ -42,9 +42,7 @@ public class UserService {
         String payload = redisValue.get();
 
         //? Convert the String to a JSON 
-        User user = new User(payload);
-        JsonObject userJson = user.toJson();
-
+        JsonObject userJson = toJson(payload);
         System.out.println(userJson);
 
         //? Check if the key (email) exists in Redis
@@ -55,6 +53,17 @@ public class UserService {
 
         //? Check the email AND password is 
 
+
+    }
+
+    //? Convert String --> JSON object
+
+    public JsonObject toJson(String payload) {
+        StringReader strReader = new StringReader(payload);
+        JsonReader jsReader = Json.createReader(strReader);
+        JsonObject createJson = jsReader.readObject();
+
+        return createJson;
 
     }
     
