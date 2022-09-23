@@ -34,7 +34,6 @@ public class RegisterController {
 
     @PostMapping(path = "/createAccount")
     public String postRegisterPage(Model model, @RequestBody MultiValueMap<String, String> form) {
-        // List<String> registerDetails = new LinkedList<>();
 
         String name = form.getFirst("name");
         String username = form.getFirst("username");
@@ -50,7 +49,6 @@ public class RegisterController {
         String payload = userObj.toString();
 
         //? Store data in Redis Database
-        
         userSvc.createProfile(email, payload);
 
         return "redirect:/";

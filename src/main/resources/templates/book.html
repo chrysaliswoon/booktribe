@@ -23,6 +23,45 @@
     <title>Book Tribe</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/home}">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+            alt="Avatar Logo"
+            style="width: 40px"
+            class="rounded-pill"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/home}"
+                ><i class="bi bi-house-heart-fill"></i>Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/goals}"
+                ><i class="bi bi-bookmark-heart-fill"></i>Reading Goals</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/tribe}"
+                ><i class="bi bi-person-hearts"></i>Book Tribe</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="container" data-th-each="d: ${details}" style="margin-top: 20px;">
         <div class="row">
             <div class="col-md-4">

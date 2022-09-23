@@ -27,7 +27,10 @@ public class User{
         this.password = password;
     }
 
-    public static User createUser(String name, String username, String email, String password) {
+    public User(String payload) {
+	}
+
+	public static User createUser(String name, String username, String email, String password) {
         User userData = new User(name, username, email, password);
 
         userData.setName(name);
@@ -68,6 +71,9 @@ public class User{
 
         return create(jsReader.readObject());
     }
+
+    //? Convert String --> JSON object
+
 
     
 }

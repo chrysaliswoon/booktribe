@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
@@ -30,80 +31,31 @@ public class UserService {
 
     public void createProfile(String email, String payload) {
         userRepo.create(email, payload);
-        // String successMsg = "New user has been created";
-
-        // return successMsg;
     }
 
-    // //? API URL
-    // private static String userProfileURL = "https://vttp-booktribe.herokuapp.com/api/user";
+    public void checkProfile(String email, String password) {
 
-    // private ArrayList<User> userProfile = new ArrayList<>();
+        //? Get Redis Value from the Database
+        Optional<String> redisValue = userRepo.findUserByEmail(email);
 
-    // //? Get user profile details
-    // public List <User> userProfile() {
-        
-    //     //? URI (URL) parameters
-    //     Map<String, String> urlParams = new HashMap<>();
-    //     // urlParams.put("id", email);
+        //? Store the Value as a string called Payload
+        String payload = redisValue.get();
 
-    //     //? Create endpoint URL with query string
-    //     String URL = UriComponentsBuilder.fromUriString(userProfileURL)
-    //         .buildAndExpand(urlParams)
-    //         .toUriString();
-        
-    //     //? Create GET Request
-    //     RequestEntity<Void> req = RequestEntity.get(URL).build();
+        //? Convert the String to a JSON 
+        User user = new User(payload);
+        JsonObject userJson = user.toJson();
 
-    //     //? Make call to User API in Redis Database
-    //     RestTemplate template = new RestTemplate();
-    //     ResponseEntity<String> res;
+        System.out.println(userJson);
 
-    //     try {
-    //         res = template.exchange(req, String.class);
-    //     } catch (Exception ex) {
-    //         System.err.printf("Error: ", ex.getMessage());
-    //         return Collections.emptyList();
-    //     }
+        //? Check if the key (email) exists in Redis
 
-    //     // ? Get body with the payload
-    //     String payload = res.getBody();
-
-    //     // ? Convert payload to JSON object
-    //     Reader strReader = new StringReader(payload);
-        
-    //     // ? Create JSONReader from Reader
-    //     JsonReader jsonReader = Json.createReader(strReader);
-
-    //     //? Reads payload as Array of JSON object
-    //     JsonObject profileObj = jsonReader.readObject();
 
         
-    //     String user_name = profileObj.getString("name");
-    //     String user_email = profileObj.getString("email");
-    //     String user_profile = profileObj.getString("profile");
-
-    //     userProfile.add(User.createUserProfile(user_name, user_email, user_profile));
-
-    //     return userProfile;
         
-    // }
 
-    // public List<User> userLogin(String email) {
+        //? Check the email AND password is 
 
-    //     //? Checks if userprofile exists
-    //     boolean profileExists;
 
-    //     // if (email == user_email) {
-    //     //     profileExists = true;
-    //     //     System.out.println("Account exists!");
-    //     // } else {
-    //     //     profileExists = false;
-    //     //     System.out.println("Account does not exist!");
-    //     // }
-
-    //     return null;
-
-    // }
+    }
     
 }
