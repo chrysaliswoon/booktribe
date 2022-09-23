@@ -19,3 +19,20 @@ This project is my submission for an assignment where we were tasked to design a
 
 
 # Breakdown of the Project
+
+
+
+
+
+# Resources & References
+
+API Used:
+- [Google Books](https://developers.google.com/books/docs/v1/using)
+- [Random Quote Generator](https://goquotes.docs.apiary.io/#reference/get-random-quote(s)/apiv1random/get-random-quote(s))
+
+Styling:
+- [Bootstrap](https://getbootstrap.com/)
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
+
+Database:
+- [Redis](https://redis.com/)
