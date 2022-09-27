@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ import vttp.project.booktribe.repository.QuoteRepository;
 @Service
 public class QuoteService {
 
-    private static final String API = "https://goquotes-api.herokuapp.com/api/v1/random?count=1";
+    private static final String API = "https://poetrydb.org/random";
 
     @Autowired
     private QuoteRepository quoteRepo;
@@ -52,21 +54,21 @@ public class QuoteService {
         // ? Create JSONReader from Reader
         JsonReader jsonReader = Json.createReader(strReader);
 
-        // ? Reads payload as JSON object
-        JsonObject apiResult = jsonReader.readObject();
+        // ? Reads payload as an array
+        // JsonObject apiResult = jsonReader.readObject();
+        JsonArray apiResult = jsonReader.readArray();
 
         // ? Get array within the object
-        JsonArray quotes = apiResult.getJsonArray("quotes");
-
-        // System.out.println(quotes);
+        JsonObject poem = apiResult.getJsonObject(0);
 
         ArrayList<Quote> quote = new ArrayList<>();
-        JsonObject quoteInfo = quotes.getJsonObject(0);
-        String text = quoteInfo.getString("text");
-        String author = quoteInfo.getString("author");
-        String tag = quoteInfo.getString("tag");
+        String text = poem.getString("title");
+        String author = poem.getString("author");
+        JsonArray lines = poem.getJsonArray("lines");
+        
+        String lineCount = poem.getString("linecount");
 
-        quote.add(Quote.createQuote(text, author, tag));
+        quote.add(Quote.createQuote(text, author, lineCount));
         return quote;
     }
 

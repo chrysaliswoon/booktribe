@@ -146,7 +146,4 @@ public class BookService {
         
     }
 
-    public Optional<Book> getBookById(String id) {
-        return null;
-    }
 }
