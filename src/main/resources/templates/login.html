@@ -24,98 +24,85 @@
     <title>Book Tribe</title>
   </head>
   <body>
-    <div class="hero container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-      <div class="row gx-lg-5 align-items-center mb-5">
-        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-          <h1
-            class="my-5 display-5 fw-bold ls-tight"
-            style="color: hsl(222, 68%, 78%)"
-          >
-            Welcome to your<br />
-            <span style="color: hsl(218, 86%, 62%)">Virtual Bookshelf</span>
-          </h1>
-          <p class="mb-4 opacity-70" style="color: hsl(220, 7%, 56%)">
-            We'll help you track of your existing books and which books you have
-            read so you can focus on the content. See how your reading develops
-            over time and use that to help you pick better books.
-          </p>
-        </div>
-
-        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-          <div
-            id="radius-shape-1"
-            class="position-absolute rounded-circle shadow-5-strong"
-          ></div>
-          <div
-            id="radius-shape-2"
-            class="position-absolute shadow-5-strong"
-          ></div>
-
-          <div class="card bg-glass">
-            <div class="card-body px-4 py-5 px-md-5">
-              <h1
-              class="display-5 fw-bold ls-tight"
+    <div class="hero">
+      <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+          <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+            <h1
+              class="my-5 display-5 fw-bold ls-tight"
               style="color: hsl(222, 68%, 78%)"
             >
-              Book
-              <span style="color: hsl(218, 86%, 62%)">Tribe</span>
+              Welcome to your<br />
+              <span style="color: hsl(218, 86%, 62%)">Virtual Bookshelf</span>
             </h1>
-            
-              <form th:action="@{/login}" method="POST">
-                <!-- User Login -->
-                <div class="form-outline mb-4">
-                  <label for="user">Email:</label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    class="form-control"
-                  />
-                </div>
+            <p class="mb-4 opacity-70" style="color: hsl(220, 7%, 56%)">
+              We'll help you track of your existing books and which books you
+              have read so you can focus on the content. See how your reading
+              develops over time and use that to help you pick better books.
+            </p>
+          </div>
 
-                <!-- Password Login -->
-                <div class="form-outline mb-4">
-                  <label for="password">Password:</label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    class="form-control"
-                  />
-                </div>
+          <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div
+              id="radius-shape-1"
+              class="position-absolute rounded-circle shadow-5-strong"
+            ></div>
+            <div
+              id="radius-shape-2"
+              class="position-absolute shadow-5-strong"
+            ></div>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                  Log In
-                </button>
+            <div class="card bg-glass">
+              <div class="card-body px-4 py-5 px-md-5">
+                <h1
+                  class="display-5 fw-bold ls-tight"
+                  style="color: hsl(222, 68%, 78%)"
+                >
+                  Book
+                  <span style="color: hsl(218, 86%, 62%)">Tribe</span>
+                </h1>
 
-                <!-- Register buttons -->
-                <div class="text-center">
-                  <p>or login with:</p>
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="bi bi-facebook"></i>
-                  </button>
+                <form data-th-action="@{/login}" method="POST" th:object="${user}">
+                  <!-- User Login -->
+                  <div class="form-outline mb-4">
+                    <label for="user">Email:</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="form-control"
+                    />
+                  </div>
 
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="bi bi-google"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="bi bi-twitter"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="bi bi-github"></i>
-                  </button>
-                </div>
-              </form>
-              <div class="text-center">
-                <form th:action="@{/register}" method="POST">
-                  <p>Hey there! Are you new here and don't have an account?</p>
+                  <!-- Password Login -->
+                  <div class="form-outline mb-4">
+                    <label for="password">Password:</label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="form-control"
+                    />
+                  </div>
+                  
+                  <!-- Submit button -->
                   <button type="submit" class="btn btn-primary btn-block mb-4">
-                    Create New Account
+                    Log In
                   </button>
                 </form>
+                <div class="text-center">
+                  <form th:action="@{/register}" method="POST">
+                    <p>
+                      Hey there! Are you new here and don't have an account?
+                    </p>
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block mb-4"
+                    >
+                      Create New Account
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

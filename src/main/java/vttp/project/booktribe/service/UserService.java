@@ -1,21 +1,12 @@
 package vttp.project.booktribe.service;
 
-import java.io.Reader;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -29,34 +20,45 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
+    private JsonObject userJson; 
+
     public void createProfile(String email, String payload) {
         userRepo.create(email, payload);
     }
 
-    public JsonObject login(String email, String password) {
+    public boolean login(String email, String password) {
 
         //? Get Redis Value from the Database
         Optional<String> redisValue = userRepo.findUserByEmail(email);
+
+        if (redisValue.isEmpty()) {
+            return false;
+        } 
 
         //? Store the Value as a string called Payload
         String payload = redisValue.get();
 
         //? Convert the String to a JSON 
-        JsonObject userJson = toJson(payload);
-        
-        
-        return userJson;
+        userJson = toJson(payload);
 
         //? Check if the key (email) exists in Redis
+        String redis_password = userJson.getString("password");
 
+        //? Check if password is correct
+        if (password.equals(redis_password)) {
+            return true;
+        }
 
-        //? Check the email AND password is 
-
-
+        return false;
     }
 
-    //? Convert String --> JSON object
+    public User userDetails(String email) {
+        return User.loginUser(userJson);
+    }
 
+
+
+    //? Convert String --> JSON object
     public JsonObject toJson(String payload) {
         StringReader strReader = new StringReader(payload);
         JsonReader jsReader = Json.createReader(strReader);
@@ -69,5 +71,6 @@ public class UserService {
     public List<User> userProfile() {
         return null;
     }
+
     
 }

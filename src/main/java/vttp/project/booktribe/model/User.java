@@ -20,28 +20,43 @@ public class User{
 
     }
 
-    public User (String name, String username, String email, String password) {
+    public User (String name, String username, String email) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+    }
+
+
+    public User (String name, String username, String email, String password, String profile) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.profile = profile;
     }
 
-    public User(String payload) {
-	}
-
-	public static User createUser(String name, String username, String email, String password) {
-        User userData = new User(name, username, email, password);
+	public static User createUser(String name, String username, String email, String password, String profile) {
+        User userData = new User(name, username, email, password, profile);
 
         userData.setName(name);
         userData.setUsername(username);
         userData.setEmail(email);
         userData.setPassword(password);
+        userData.setProfile(profile);
 
-        
         return userData;
     }
 
+	public static User loginUser(JsonObject jsonObj) {
+        User userData = new User();
+
+        userData.setName(jsonObj.getString("name"));
+        userData.setUsername(jsonObj.getString("username"));
+        userData.setEmail(jsonObj.getString("email"));
+        userData.setProfile(jsonObj.getString("profile"));
+
+        return userData;
+    }
 
     //? Convert Model --> JSON object
     public JsonObject toJson() {
@@ -50,6 +65,7 @@ public class User{
             .add("username", username)
             .add("email", email)
             .add("password", password)
+            .add("profile", profile)
 
             .build();
     }
@@ -60,6 +76,7 @@ public class User{
         user.setUsername(jsonObj.getString("username"));
         user.setEmail(jsonObj.getString("email"));
         user.setPassword(jsonObj.getString("password"));
+        user.setPassword(jsonObj.getString("profile"));
 
         return user;
     }

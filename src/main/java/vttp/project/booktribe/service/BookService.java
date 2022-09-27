@@ -1,4 +1,4 @@
-package vttp.project.booktribe.service;
+ package vttp.project.booktribe.service;
 
 import java.io.Reader;
 import java.io.StringReader;
@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +25,7 @@ import vttp.project.booktribe.model.Book;
 import vttp.project.booktribe.repository.BookRepository;
 
 @Service
-public class BookServices {
+public class BookService {
 
     // ? Instantiate the Book Repository to use Redis database
     @Autowired
@@ -143,5 +144,9 @@ public class BookServices {
             
         return list;
         
+    }
+
+    public Optional<Book> getBookById(String id) {
+        return null;
     }
 }

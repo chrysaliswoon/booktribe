@@ -23,6 +23,11 @@ This project is my submission for an assignment where we were tasked to design a
 
 
 
+[FlashAttribute](https://www.baeldung.com/spring-web-flash-attributes)
+
+If you are using :/redirect then use flashattribute rather than model.addattribute
+
+
 
 # Resources & References
 

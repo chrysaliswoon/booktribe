@@ -8,13 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import vttp.project.booktribe.model.Quote;
-import vttp.project.booktribe.service.QuoteServices;
+import vttp.project.booktribe.service.QuoteService;
 
 @Controller
 public class QuotesController {
 
     @Autowired
-    QuoteServices quoteSvc;
+    QuoteService quoteSvc;
 
     @GetMapping("/inspire")
     public String getQuotes(Model model) {

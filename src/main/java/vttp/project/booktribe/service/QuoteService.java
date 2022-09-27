@@ -20,7 +20,7 @@ import vttp.project.booktribe.model.Quote;
 import vttp.project.booktribe.repository.QuoteRepository;
 
 @Service
-public class QuoteServices {
+public class QuoteService {
 
     private static final String API = "https://goquotes-api.herokuapp.com/api/v1/random?count=1";
 

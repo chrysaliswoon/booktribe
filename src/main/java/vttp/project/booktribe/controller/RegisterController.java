@@ -39,8 +39,9 @@ public class RegisterController {
         String username = form.getFirst("username");
         String email = form.getFirst("email");
         String password = form.getFirst("password");
+        String profile = form.getFirst("profile");
 
-        User user = new User(name, username, email, password);
+        User user = new User(name, username, email, password, profile);
 
         //?  Convert User model -> JSON object
         JsonObject userObj = user.toJson();
@@ -51,7 +52,7 @@ public class RegisterController {
         //? Store data in Redis Database
         userSvc.createProfile(email, payload);
 
-        return "redirect:/";
+        return "/";
     } 
 
 }
