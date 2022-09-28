@@ -21,7 +21,7 @@ public class BookController {
     @Autowired
     private BookService bookSvc;
 
-    @GetMapping("/search")
+    @GetMapping(path = "/search")
     public String getBookResults(Model model, @RequestParam String book, HttpSession session) { 
         List<Book> bookResults = bookSvc.exploreBooks(book);
         User userDetails = (User) session.getAttribute("userDetails");
@@ -32,7 +32,7 @@ public class BookController {
         return "explore";
     }
 
-    @GetMapping( path = "/search/{id}")
+    @GetMapping( path="/search/{id}")
     public String getBookById(Model model, @PathVariable String id, HttpSession session) {
         List<Book> bookDetails = bookSvc.bookDetails(id);
         User userDetails = (User) session.getAttribute("userDetails");

@@ -100,9 +100,10 @@ public class BookService {
 
         // ? Create endpoint URL with query string
         String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
-                .queryParam("api_key", apiKey)
+                .queryParam("key", apiKey)
                 .buildAndExpand(urlParams)
                 .toUriString();
+        System.out.println(url);
 
         // ? Create GET Request
         RequestEntity<Void> req = RequestEntity.get(url).build();
