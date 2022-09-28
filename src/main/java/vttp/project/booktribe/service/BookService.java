@@ -43,7 +43,7 @@ public class BookService {
 
         // ? Create endpoint URL with query string
         String url = UriComponentsBuilder.fromUriString(apiExploreBookUrl)
-                .queryParam("api_key", apiKey)
+                .queryParam("key", apiKey)
                 .queryParam("q", book)
                 .toUriString();
 
