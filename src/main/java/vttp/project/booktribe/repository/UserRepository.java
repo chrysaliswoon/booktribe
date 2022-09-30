@@ -17,13 +17,13 @@ public class UserRepository {
     private RedisTemplate<String, String> template;
 
     //? CREATE new user
-
     public void create(String redisKey, String payload) {
         ValueOperations<String, String> valueOp = template.opsForValue();
         valueOp.set(redisKey, payload);
     }
 
     //? READ user data
+    //? FIND SPECIFIC USER
     public Optional<String> findUserByEmail(String email) {
         ValueOperations<String, String> valueOp = template.opsForValue();
         String value = valueOp.get(email);
@@ -31,5 +31,8 @@ public class UserRepository {
             return Optional.empty();
         return Optional.of(value);
     }
+
+    //? FIND ALL USERS
+
     
 }

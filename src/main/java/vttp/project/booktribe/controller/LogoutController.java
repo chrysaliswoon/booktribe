@@ -13,6 +13,7 @@ public class LogoutController {
     @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("userDetails");
+        session.invalidate();
         System.out.println("User has been logged out");
         return "/login";
     }

@@ -23,8 +23,13 @@ public class LoginController {
     private UserService userSvc;
 
     // ? LOGIN PAGE
-    @GetMapping(path = {"/", "/login"})
+    @GetMapping(path = "/")
     public String getLoginPage() {
+        return "login";
+    }
+
+    @GetMapping(path = "/login")
+    public String LoginPage() {
         return "login";
     }
 

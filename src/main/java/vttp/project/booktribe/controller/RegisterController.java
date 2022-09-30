@@ -32,7 +32,7 @@ public class RegisterController {
 
     }
 
-    @PostMapping(path = "/createAccount")
+    @PostMapping(path = "/")
     public String postRegisterPage(Model model, @RequestBody MultiValueMap<String, String> form) {
 
         String name = form.getFirst("name");
@@ -52,7 +52,7 @@ public class RegisterController {
         //? Store data in Redis Database
         userSvc.createProfile(email, payload);
 
-        return "/";
+        return "/login";
     } 
 
 }

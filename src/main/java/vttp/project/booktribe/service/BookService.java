@@ -135,6 +135,7 @@ public class BookService {
             JsonObject volInfo = bookResult.getJsonObject("volumeInfo");
             JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
             String imgUrl = imgLinks.getString("small");
+            System.out.print(imgUrl);
             String title = volInfo.getString("title");
             String subtitle = volInfo.getString("subtitle");
             String description = volInfo.getString("description");
