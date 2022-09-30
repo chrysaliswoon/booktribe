@@ -65,7 +65,10 @@ public class QuoteService {
         String text = poem.getString("title");
         String author = poem.getString("author");
         JsonArray lines = poem.getJsonArray("lines");
-        
+        // for (int i = 0; i < lines.size(); i++) {
+        //     String line = lines.getString(i);
+        //     System.out.print(line);
+        // }
         String lineCount = poem.getString("linecount");
 
         quote.add(Quote.createQuote(text, author, lineCount));

@@ -372,3 +372,34 @@ img {
     }
 
 }
+
+/* Button */
+
+.bk-info button {
+	background: #FC756F;
+	border: none;
+	color: #fff;
+	display: inline-block;
+	padding: 3px 15px;
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: uppercase;
+	cursor: pointer;
+	margin-right: 4px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.bk-info button.bk-active,
+.bk-info button:active {
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.no-touch .bk-info button:hover,
+.bk-info button.bk-active {
+	background: #d0544e;
+}
+
+.no-csstransforms3d .bk-info button,
+.no-js .bk-info button {
+	display: inline-block;
+}
