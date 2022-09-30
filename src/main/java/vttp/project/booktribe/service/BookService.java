@@ -85,9 +85,15 @@ public class BookService {
             String imgUrl = imgLinks.getString("thumbnail");
             String title = volInfo.getString("title");
             JsonArray authors = volInfo.getJsonArray("authors");
+            List<String> authorList = new ArrayList<String>();
+            for (int j = 0; j < authors.size(); j++) {
+            String author = authors.getString(j);
+            authorList.add(author);
+            }
+            String authorName = authorList.get(0);
             JsonArray categories = volInfo.getJsonArray("categories");
 
-            list.add(Book.createBook(id, imgUrl, title, authors, categories));
+            list.add(Book.createBook(id, imgUrl, title, authorName, categories));
         }
         return list;
     }
@@ -138,9 +144,15 @@ public class BookService {
             String subtitle = volInfo.getString("subtitle");
             String description = volInfo.getString("description");
             JsonArray authors = volInfo.getJsonArray("authors");
+            List<String> authorList = new ArrayList<String>();
+            for (int i = 0; i < authors.size(); i++) {
+            String author = authors.getString(i);
+            authorList.add(author);
+            }
+            String authorName = authorList.get(0);
             JsonArray categories = volInfo.getJsonArray("categories");
 
-            list.add(Book.createSpecificBook(id, imgUrl, title, subtitle, description, authors, categories));
+            list.add(Book.createSpecificBook(id, imgUrl, title, subtitle, description, authorName, categories));
             
         return list;
         

@@ -1,6 +1,7 @@
 package vttp.project.booktribe.model;
 
 import java.io.StringReader;
+import java.util.List;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
@@ -14,13 +15,13 @@ public class Book {
     private String id;
     private String title;
     private String subtitle;
-    private JsonArray authors;
+    private String authors;
     private JsonArray categories;
     private String purchaseDate;
     private String description;
     private String imgUrl;
 
-    public static Book createBook(String id, String imgUrl, String title, JsonArray authors, JsonArray categories) {
+    public static Book createBook(String id, String imgUrl, String title, String authors, JsonArray categories) {
         Book bookData = new Book();
 
         bookData.setId(id);
@@ -32,7 +33,7 @@ public class Book {
         return bookData;
     }
 
-    public static Book createSpecificBook(String id, String imgUrl, String title, String subtitle, String description, JsonArray authors, JsonArray categories) {
+    public static Book createSpecificBook(String id, String imgUrl, String title, String subtitle, String description, String authorList, JsonArray categories) {
         Book bookData = new Book();
 
         bookData.setId(id);
@@ -40,7 +41,7 @@ public class Book {
         bookData.setTitle(title);
         bookData.setSubtitle(subtitle);
         bookData.setDescription(description);
-        bookData.setAuthors(authors);
+        bookData.setAuthors(authorList);
         bookData.setCategories(categories);
         
         return bookData;
