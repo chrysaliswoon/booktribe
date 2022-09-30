@@ -39,6 +39,12 @@ public class BookService {
     @Value("${API_KEY}")
     private String apiKey;
 
+    //? Save Book to User
+    public void saveBook(String bookID, String payload) {
+        bookRepo.saveBook(bookID, payload);
+    }
+
+    //? Get ALL books
     public List<Book> exploreBooks(String book) {
 
         // ? Create endpoint URL with query string
@@ -72,10 +78,11 @@ public class BookService {
 
         // ? Reads payload as JSON object
         JsonObject bookResult = jsonReader.readObject();
-
+        
+        
         // ? Get array within the object
         JsonArray bookData = bookResult.getJsonArray("items");
-
+        
         ArrayList<Book> list = new ArrayList<>();
         for (int i = 0; i < bookData.size(); i++) {
             JsonObject object = bookData.getJsonObject(i);
@@ -85,6 +92,7 @@ public class BookService {
             String imgUrl = imgLinks.getString("thumbnail");
             String title = volInfo.getString("title");
             JsonArray authors = volInfo.getJsonArray("authors");
+            System.out.print(volInfo);
             List<String> authorList = new ArrayList<String>();
             for (int j = 0; j < authors.size(); j++) {
             String author = authors.getString(j);
@@ -98,6 +106,7 @@ public class BookService {
         return list;
     }
 
+    //? Get specific book details
     public List<Book> bookDetails(String id) {
 
         // URI (URL) parameters

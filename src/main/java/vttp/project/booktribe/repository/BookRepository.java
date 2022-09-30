@@ -13,10 +13,10 @@ public class BookRepository {
     @Qualifier("redis")
     private RedisTemplate<String, String> template;
 
-    //? Save the book to the bookshelf
-    public void save(String redisKey, String payload) {
+    //? Save the book to the bookshelf if it doesn't exist
+    public void saveBook(String redisKey, String payload) {
         ValueOperations<String, String> valueOp = template.opsForValue();
-        valueOp.set(redisKey, payload);
+        valueOp.setIfAbsent(redisKey, payload);
     }
 
     
