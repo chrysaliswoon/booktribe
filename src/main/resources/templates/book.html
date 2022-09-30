@@ -29,25 +29,30 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/profile}"><i class="bi bi-house-heart-fill"></i> Home </a>
+            <a class="nav-link" style="color: white" th:href="@{/profile}"><i class="bi bi-house-heart-fill"></i> Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/goals}"><i class="bi bi-bookmark-heart-fill"></i> Reading Goals </a>
+            <a class="nav-link" style="color: white" th:href="@{/goals}"><i class="bi bi-bookmark-heart-fill"></i> Reading Goals </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/tribe}"><i class="bi bi-person-hearts"></i> Book Tribe </a>
+            <a class="nav-link" style="color: white" th:href="@{/tribe}"><i class="bi bi-person-hearts"></i> Book Tribe </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/inspire}"><i class="bi bi-moon-stars-fill"></i> Inspire </a>
+            <a class="nav-link" style="color: white" th:href="@{/inspire}"><i class="bi bi-moon-stars-fill"></i> Inspire </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/about}"><i class="bi bi-book-half"></i> About </a>
+            <a class="nav-link" style="color: white" th:href="@{/about}"><i class="bi bi-book-half"></i> About </a>
           </li>
         </ul>
         <form class="d-flex" action="/search" method="GET">
           <input class="form-control me-2" type="text" name="book" id="book" placeholder="Book Name">
-          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
         </form>
+        <div style="margin-left: 50px;">
+          <form class="d-flex" action="/logout" method="post">
+            <button class="btn btn-outline-light" type="submit"><i class="bi bi-door-closed-fill"></i> Logout</button>
+          </form>
+        </div>
       </div>
     </div>
   </nav>
