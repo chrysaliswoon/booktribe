@@ -26,6 +26,7 @@ public class HomePageController {
         return "home";
     }
 
+
     // ? HOMEPAGE
     @GetMapping(path = "/profile")
     public String getProfilePage(Model model, HttpSession session) {

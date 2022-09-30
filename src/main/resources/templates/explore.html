@@ -63,48 +63,43 @@
       </div>
     </nav>
 
-    <section>
-      <div class="container" style="margin-top: 5%">
-        <div class="row">
-          <div class="h1 text-center text-dark" id="pageHeaderTitle">
-            <h1>Search Results For: <span data-th-text="${book}"></span></h1>
-          </div>
-          <div class="col-lg-6 mb-4" data-th-each="r: ${results}">
-            <div class="card">
-              <img
-                data-th-src="@{${r.imgUrl}}"
-                alt=""
-                style="width: 200px; height: 200px; padding: 10px"
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  <span class="fw-bold mb-1" data-th-text="${r.title}"></span>
-                </h5>
-                <p
-                  class="text-muted mb-0 card-text"
-                  data-th-each="author: ${r.authors}"
-                >
-                  by: <span data-th-text="${author}"></span>
-                </p>
-                <p
-                  class="fw-bold mb-1"
-                  data-th-each="category: ${r.categories}"
-                >
-                  Categories: <span data-th-text="${category}"></span>
-                </p>
-
-                <a
-                  th:href="@{'/search/' + ${r.id}}"
-                  class="btn btn-outline-primary btn-sm"
-                >
-                  More Info
-                </a>
-                <a href="#" class="btn btn-outline-secondary btn-sm">
-                  <i class="bi bi-bookmark-heart-fill"></i
-                ></a>
+    <section style="padding: 100px;" >
+      <div class="container">
+        <div class="main" >
+          <ul id="bk-list" class="bk-list clearfix" >
+            <li data-th-each="r: ${results}"> 
+              <div class="bk-book book-1 bk-bookdefault" data-th-each="author: ${r.authors}">
+                <div class="bk-front">
+                  <div class="bk-cover-back"></div>
+                  <div class="bk-cover">
+                    <h2>
+                          <span data-th-text="${author}"></span>
+                          <span data-th-text="${r.title}"></span>
+                        </h2>
+                  </div>
+                </div>
+                <div class="bk-right"></div>
+                <div class="bk-left">
+                  <h2>
+                    <span data-th-text="${author}"></span>
+                    <span data-th-text="${r.title}"></span>
+                    </h2>
+                </div>
+                <div class="bk-top"></div>
+                <div class="bk-bottom"></div>
               </div>
-            </div>
-          </div>
+              <div class="bk-info">
+                <button class="bk-bookback"><i class="bi bi-bookmark-heart-fill"></i
+                  > Favourite</button>
+                  <a
+                  th:href="@{'/search/' + ${r.id}}"><button class="bk-bookview" th:href="@{'/search/' + ${r.id}}">View inside</button></a>
+              </div>
+            </li>
+            <li>
+            </li>
+            <li>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

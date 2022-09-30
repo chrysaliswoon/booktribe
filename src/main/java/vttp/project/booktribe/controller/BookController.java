@@ -32,6 +32,17 @@ public class BookController {
         return "explore";
     }
 
+    @GetMapping(path = "/test")
+    public String testBook(Model model, @RequestParam String book, HttpSession session) { 
+        List<Book> bookResults = bookSvc.exploreBooks(book);
+        // User userDetails = (User) session.getAttribute("userDetails");
+        // model.addAttribute("userDetails", userDetails);
+        model.addAttribute("book", book.toUpperCase());
+        model.addAttribute("results", bookResults);
+
+        return "explore2";
+    }
+
     @GetMapping( path="/search/{id}")
     public String getBookById(Model model, @PathVariable String id, HttpSession session) {
         List<Book> bookDetails = bookSvc.bookDetails(id);

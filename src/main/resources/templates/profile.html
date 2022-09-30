@@ -22,14 +22,65 @@
     />
     <title>Book Tribe</title>
   </head>
-  <body >
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #6c584c">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/profile}">
+          <img
+            src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
+            alt="Avatar Logo"
+            style="width: 40px"
+            class="rounded-pill"
+          />
+        </a>        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/profile}"
+                ><i class="bi bi-house-heart-fill"></i> Home </a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/goals}"
+                ><i class="bi bi-bookmark-heart-fill"></i> Reading Goals </a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/tribe}"
+                ><i class="bi bi-person-hearts"></i> Book Tribe </a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/inspire}"
+                ><i class="bi bi-moon-stars-fill"></i> Inspire </a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/about}"
+                ><i class="bi bi-book-half"></i> About </a
+              >
+            </li>
+          </ul>
+          <form class="d-flex" action="/search" method="GET">
+            <input class="form-control me-2" type="text"
+            name="book"
+            id="book"
+            placeholder="Book Name">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
     <div
       class="rounded-top text-white d-flex flex-row"
-      style="background-color: #000; height: 200px"
+      style="background-color: #6c584c; height: 200px" 
     >
       <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px">
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+          src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
           alt="Generic placeholder image"
           class="img-fluid img-thumbnail mt-4 mb-2"
           style="width: 150px; z-index: 1"
@@ -48,7 +99,7 @@
         <p data-th-text="${userDetails.email}"></p>
       </div>
     </div>
-    <div class="p-4 text-black" style="background-color: #f8f9fa">
+    <div class="p-4 text-black">
       <div class="d-flex justify-content-end text-center py-1">
         <div>
           <p class="mb-1 h5">20</p>
@@ -67,10 +118,12 @@
     <div class="card-body p-4 text-black">
       <div class="mb-5">
         <p class="lead fw-normal mb-1">
-          What would you like to do today <span data-th-text="${userDetails.username}"></span>?
+          What would you like to do today
+          <span data-th-text="${userDetails.username}"></span>?
         </p>
-        <div class="row g-3" style="background-color: #f8f9fa">
-          <div class="col mb-3">
+
+        <div class="row" style="padding-top: 30px;">
+          <div class="col">
             <form action="/goals" method="GET">
               <button
                 type="submit"
@@ -81,7 +134,7 @@
               </button>
             </form>
           </div>
-          <div class="col mb-3">
+          <div class="col">
             <form action="/tribe" method="GET">
               <button
                 type="submit"
@@ -92,67 +145,47 @@
               </button>
             </form>
           </div>
-          <div class="col mb-3">
-            <form action="/search" method="GET">
-              <input
-                type="text"
-                name="book"
-                id="book"
-                placeholder="Book Name"
-                style="padding: 0.9%"
-                required
-              />
+          <div class="col">
+            <form action="/inspire" method="GET">
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-outline-dark"
+                data-mdb-ripple-color="dark"
               >
-              <i class="bi bi-search"></i>              
-            </button>
+                Be Inspired
+              </button>
             </form>
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <p class="lead fw-normal mb-0"><span data-th-text="${userDetails.username}"></span>'s Bookshelf</p>
-        <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
-      </div>
-      <div class="row g-5">
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1581527774i/41881472.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1457284880i/27220736.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1558590675i/45996732.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441586645i/26324.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
-        </div>
-        <div class="col mb-5">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441967961i/231262.jpg"
-            alt="image 1"
-            class="w-100 rounded-3"
-          />
+      <div>
+        <p class="lead fw-normal mb-1">
+          Bookshelf
+        </p>
+        <div class="container px-4">
+          <div class="container" style="padding-top: 30px;">
+            <div class="row gx-5">
+              <div class="col">
+                <div class="p-3 book books-1"></div>
+              </div>
+              <div class="col">
+                <div class="p-3 book books-1"></div>
+              </div>
+              <div class="col">
+                <div class="p-3 book books-1"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+      <a href="https://dribbble.com/YancyMin" class="dr-url" target="_blank"
+        ><img
+          class="dr"
+          src="https://cdn.dribbble.com/assets/logo-footer-hd-a05db77841b4b27c0bf23ec1378e97c988190dfe7d26e32e1faea7269f9e001b.png"
+          alt=""
+      /></a>
     </div>
     <!-- Bootstrap Bundle with Popper -->
     <script
