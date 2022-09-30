@@ -103,7 +103,6 @@ public class BookService {
                 .queryParam("key", apiKey)
                 .buildAndExpand(urlParams)
                 .toUriString();
-        System.out.println(url);
 
         // ? Create GET Request
         RequestEntity<Void> req = RequestEntity.get(url).build();
@@ -134,8 +133,7 @@ public class BookService {
         ArrayList<Book> list = new ArrayList<>();
             JsonObject volInfo = bookResult.getJsonObject("volumeInfo");
             JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
-            String imgUrl = imgLinks.getString("small");
-            System.out.print(imgUrl);
+            String imgUrl = imgLinks.getString("thumbnail");
             String title = volInfo.getString("title");
             String subtitle = volInfo.getString("subtitle");
             String description = volInfo.getString("description");

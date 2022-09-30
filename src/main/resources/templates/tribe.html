@@ -24,42 +24,53 @@
     <title>Book Tribe</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #6c584c">
       <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/home}">
+        <a class="navbar-brand" th:href="@{/profile}">
           <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+            src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
             alt="Avatar Logo"
             style="width: 40px"
             class="rounded-pill"
           />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapsibleNavbar"
-        >
+        </a>        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/home}"
-                ><i class="bi bi-house-heart-fill"></i>Home</a
+              <a class="nav-link" th:href="@{/profile}"
+                ><i class="bi bi-house-heart-fill"></i> Home </a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" th:href="@{/goals}"
-                ><i class="bi bi-bookmark-heart-fill"></i>Reading Goals</a
+                ><i class="bi bi-bookmark-heart-fill"></i> Reading Goals </a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" th:href="@{/tribe}"
-                ><i class="bi bi-person-hearts"></i>Book Tribe</a
+                ><i class="bi bi-person-hearts"></i> Book Tribe </a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/inspire}"
+                ><i class="bi bi-moon-stars-fill"></i> Inspire </a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/about}"
+                ><i class="bi bi-book-half"></i> About </a
               >
             </li>
           </ul>
+          <form class="d-flex" action="/search" method="GET">
+            <input class="form-control me-2" type="text"
+            name="book"
+            id="book"
+            placeholder="Book Name">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          </form>
         </div>
       </div>
     </nav>
