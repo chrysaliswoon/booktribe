@@ -18,10 +18,13 @@ public class QuotesController {
 
     @GetMapping("/inspire")
     public String getQuotes(Model model) {
+        List<Quote> poem = quoteSvc.getPoem();
         List<Quote> quote = quoteSvc.getQuote();
 
+        model.addAttribute("poem", poem);
         model.addAttribute("quote", quote);
         return "inspire";
     }
+    
     
 }

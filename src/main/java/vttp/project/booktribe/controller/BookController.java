@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import vttp.project.booktribe.model.Book;
@@ -39,6 +40,11 @@ public class BookController {
         // model.addAttribute("userDetails", userDetails);
         model.addAttribute("details", bookDetails);
         return "book";
+    }
+
+    @PostMapping(path = "/favourite")
+    public String favouriteBook(Model model) {
+        return "profle";
     }
 
 

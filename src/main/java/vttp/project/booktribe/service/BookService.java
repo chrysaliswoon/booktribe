@@ -69,7 +69,6 @@ public class BookService {
 
         // ? Get body with the payload
         String payload = res.getBody();
-
         // ? Convert payload to JSON object
         Reader strReader = new StringReader(payload);
 
@@ -82,26 +81,31 @@ public class BookService {
         
         // ? Get array within the object
         JsonArray bookData = bookResult.getJsonArray("items");
-        
         ArrayList<Book> list = new ArrayList<>();
         for (int i = 0; i < bookData.size(); i++) {
             JsonObject object = bookData.getJsonObject(i);
             String id = object.getString("id");
+            System.out.println(id);
             JsonObject volInfo = object.getJsonObject("volumeInfo");
             JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
             String imgUrl = imgLinks.getString("thumbnail");
             String title = volInfo.getString("title");
             JsonArray authors = volInfo.getJsonArray("authors");
-            System.out.print(volInfo);
+            JsonArray categories = volInfo.getJsonArray("categories");
+            System.out.printf("%s, %s, %s, %s", id, imgUrl, title, authors.toString());
+
             List<String> authorList = new ArrayList<String>();
             for (int j = 0; j < authors.size(); j++) {
-            String author = authors.getString(j);
-            authorList.add(author);
+                String author = authors.getString(j);
+                System.out.println(">> adding author " + author);
+                authorList.add(author);
             }
-            String authorName = authorList.get(0);
-            JsonArray categories = volInfo.getJsonArray("categories");
 
+            String authorName = authorList.get(0);
+            System.out.print(authorName);
+            
             list.add(Book.createBook(id, imgUrl, title, authorName, categories));
+            System.out.println(Book.createBook(id, imgUrl, title, authorName, categories));
         }
         return list;
     }

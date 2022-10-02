@@ -1,6 +1,7 @@
 package vttp.project.booktribe.model;
 
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import lombok.Data;
 
@@ -8,8 +9,10 @@ import lombok.Data;
 public class Quote {
 
     private String text;
+    private String content;
     private String author;
     private String tag;
+    private JsonArray tags;
 
     public static Quote create(JsonObject jo) {
 
@@ -30,11 +33,20 @@ public class Quote {
         .build();
     }
 
-    public static Quote createQuote(String text, String author, String tag) {
+    public static Quote createPoem(String text, String author, String tag) {
+        Quote poemData = new Quote();
+        poemData.setText(text);
+        poemData.setAuthor(author);
+        poemData.setTag(tag);
+
+        return poemData;
+    }
+
+    public static Quote createQuote(String author, String content, JsonArray tags) {
         Quote quoteData = new Quote();
-        quoteData.setText(text);
-        quoteData.setAuthor(author);
-        quoteData.setTag(tag);
+        quoteData.setText(author);
+        quoteData.setAuthor(content);
+        quoteData.setTags(tags);
 
         return quoteData;
     }

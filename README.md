@@ -20,7 +20,7 @@ This project is my submission for an assignment where we were tasked to design a
 
 # Breakdown of the Project
 
-
+For a detailed breakdown of the project, head over to: https://chrysalis-1.gitbook.io/java-bookshelf-app 
 
 
 [FlashAttribute](https://www.baeldung.com/spring-web-flash-attributes)
@@ -33,7 +33,7 @@ If you are using :/redirect then use flashattribute rather than model.addattribu
 
 API Used:
 - [Google Books](https://developers.google.com/books/docs/v1/using)
-- [Random Quote Generator](https://goquotes.docs.apiary.io/#reference/get-random-quote(s)/apiv1random/get-random-quote(s))
+- [Random Quote Generator](https://github.com/lukePeavey/quotable)
 
 Styling:
 - [Bootstrap](https://getbootstrap.com/)
