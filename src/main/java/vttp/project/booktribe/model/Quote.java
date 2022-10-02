@@ -44,9 +44,10 @@ public class Quote {
 
     public static Quote createQuote(String author, String content, JsonArray tags) {
         Quote quoteData = new Quote();
-        quoteData.setText(author);
-        quoteData.setAuthor(content);
+        quoteData.setAuthor(author);
+        quoteData.setContent(content);
         quoteData.setTags(tags);
+
 
         return quoteData;
     }
