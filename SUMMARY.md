@@ -1,3 +1,4 @@
 # Table of contents
 
-* [Page 1](README.md)
+* [📚 Introduction](README.md)
+* [APIs Used](apis-used.md)
