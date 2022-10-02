@@ -1,6 +1,7 @@
 package vttp.project.booktribe.service;
 
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,17 @@ public class UserService {
 
         return false;
     }
+
+    // public String users(String userID) {
+
+    //     Optional<String> redisValue = userRepo.findAllUsers(userID);
+    //     String payload = redisValue.get();
+
+    //     System.out.println(payload);
+
+    //     return payload; 
+    // }
+
 
     public User userDetails(String email) {
         return User.loginUser(userJson);

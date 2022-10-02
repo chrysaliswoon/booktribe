@@ -86,15 +86,14 @@
               <div class="bk-top"></div>
               <div class="bk-bottom"></div>
             </div>
-            <div class="bk-info">
+            <div class="bk-info" >
               <form th:action="@{/favourite}" method="POST">
                 <button class="bk-bookback" type="submit" name="submit"><i class="bi bi-bookmark-heart-fill"></i>
                   Favourite</button>
               </form>
-              <div>
-                <a th:href="@{'/search/' + ${r.id}}"><button class="bk-bookview" th:href="@{'/search/' + ${r.id}}">View
-                    Inside</button></a>
-              </div>
+              <br>
+            <a th:href="@{'/search/' + ${r.id}}"><button class="bk-bookview" th:href="@{'/search/' + ${r.id}}">View
+                Inside</button></a>
             </div>
           </li>
           <li>

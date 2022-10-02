@@ -22,14 +22,14 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.project.booktribe.model.Book;
-import vttp.project.booktribe.repository.BookRepository;
+import vttp.project.booktribe.repository.ShelfRepository;
 
 @Service
 public class BookService {
 
     // ? Instantiate the Book Repository to use Redis database
     @Autowired
-    private BookRepository bookRepo;
+    private ShelfRepository bookRepo;
 
     // ? API URL
     private static String apiExploreBookUrl = "https://www.googleapis.com/books/v1/volumes";
@@ -38,11 +38,6 @@ public class BookService {
     // ? Inject value into fields
     @Value("${API_KEY}")
     private String apiKey;
-
-    //? Save Book to User
-    public void saveBook(String bookID, String payload) {
-        bookRepo.saveBook(bookID, payload);
-    }
 
     //? Get ALL books
     public List<Book> exploreBooks(String book) {
@@ -169,5 +164,6 @@ public class BookService {
         return list;
         
     }
+
 
 }

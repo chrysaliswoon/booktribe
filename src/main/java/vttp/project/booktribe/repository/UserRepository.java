@@ -1,5 +1,6 @@
 package vttp.project.booktribe.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
+
+import redis.clients.jedis.ScanResult;
 
 
 @Repository
@@ -23,7 +26,7 @@ public class UserRepository {
     }
 
     //? READ user data
-    //? FIND SPECIFIC USER
+    //? FIND USER
     public Optional<String> findUserByEmail(String email) {
         ValueOperations<String, String> valueOp = template.opsForValue();
         String value = valueOp.get(email);
@@ -31,8 +34,5 @@ public class UserRepository {
             return Optional.empty();
         return Optional.of(value);
     }
-
-    //? FIND ALL USERS
-
     
 }
