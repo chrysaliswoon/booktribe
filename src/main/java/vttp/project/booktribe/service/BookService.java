@@ -85,27 +85,26 @@ public class BookService {
         for (int i = 0; i < bookData.size(); i++) {
             JsonObject object = bookData.getJsonObject(i);
             String id = object.getString("id");
-            System.out.println(id);
+            // System.out.println(id);
             JsonObject volInfo = object.getJsonObject("volumeInfo");
             JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
             String imgUrl = imgLinks.getString("thumbnail");
             String title = volInfo.getString("title");
             JsonArray authors = volInfo.getJsonArray("authors");
             JsonArray categories = volInfo.getJsonArray("categories");
-            System.out.printf("%s, %s, %s, %s", id, imgUrl, title, authors.toString());
+            // System.out.printf("%s, %s, %s, %s", id, imgUrl, title, authors.toString());
 
-            List<String> authorList = new ArrayList<String>();
-            for (int j = 0; j < authors.size(); j++) {
-                String author = authors.getString(j);
-                System.out.println(">> adding author " + author);
-                authorList.add(author);
-            }
+            // List<String> authorList = new ArrayList<String>();
+            // for (int j = 0; j < authors.size(); j++) {
+            //     String author = authors.getString(j);
+            //     System.out.println(">> adding author " + author);
+            //     authorList.add(author);
+            // }
 
-            String authorName = authorList.get(0);
-            System.out.print(authorName);
+            // String authorName = authorList.get(0);
+            // System.out.print(authorName);
             
-            list.add(Book.createBook(id, imgUrl, title, authorName, categories));
-            System.out.println(Book.createBook(id, imgUrl, title, authorName, categories));
+            list.add(Book.createBook(id, imgUrl, title, authors, categories));
         }
         return list;
     }
@@ -157,15 +156,15 @@ public class BookService {
             String subtitle = volInfo.getString("subtitle");
             String description = volInfo.getString("description");
             JsonArray authors = volInfo.getJsonArray("authors");
-            List<String> authorList = new ArrayList<String>();
-            for (int i = 0; i < authors.size(); i++) {
-            String author = authors.getString(i);
-            authorList.add(author);
-            }
-            String authorName = authorList.get(0);
+            // List<String> authorList = new ArrayList<String>();
+            // for (int i = 0; i < authors.size(); i++) {
+            // String author = authors.getString(i);
+            // authorList.add(author);
+            // }
+            // String authorName = authorList.get(0);
             JsonArray categories = volInfo.getJsonArray("categories");
 
-            list.add(Book.createSpecificBook(id, imgUrl, title, subtitle, description, authorName, categories));
+            list.add(Book.createSpecificBook(id, imgUrl, title, subtitle, description, authors, categories));
             
         return list;
         

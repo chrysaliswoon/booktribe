@@ -15,13 +15,14 @@ public class Book {
     private String id;
     private String title;
     private String subtitle;
-    private String authors;
+    // private String authors;
+    private JsonArray authors;
     private JsonArray categories;
     private String purchaseDate;
     private String description;
     private String imgUrl;
 
-    public static Book createBook(String id, String imgUrl, String title, String authors, JsonArray categories) {
+    public static Book createBook(String id, String imgUrl, String title, JsonArray authors, JsonArray categories) {
         Book bookData = new Book();
 
         bookData.setId(id);
@@ -33,7 +34,7 @@ public class Book {
         return bookData;
     }
 
-    public static Book createSpecificBook(String id, String imgUrl, String title, String subtitle, String description, String authorList, JsonArray categories) {
+    public static Book createSpecificBook(String id, String imgUrl, String title, String subtitle, String description, JsonArray authorList, JsonArray categories) {
         Book bookData = new Book();
 
         bookData.setId(id);
