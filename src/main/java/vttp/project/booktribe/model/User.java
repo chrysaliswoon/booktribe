@@ -1,6 +1,7 @@
 package vttp.project.booktribe.model;
 
 import java.io.StringReader;
+import java.util.ArrayList;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -15,7 +16,6 @@ public class User{
     private String email;
     private String password;
     private String profile;
-    
 
     public User() {
 
@@ -67,7 +67,6 @@ public class User{
             .add("email", email)
             .add("password", password)
             .add("profile", profile)
-
             .build();
     }
 
@@ -78,7 +77,6 @@ public class User{
         user.setEmail(jsonObj.getString("email"));
         user.setPassword(jsonObj.getString("password"));
         user.setPassword(jsonObj.getString("profile"));
-
         return user;
     }
 

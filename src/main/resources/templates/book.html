@@ -76,8 +76,10 @@
               </dd>
               <br>
               <div class="bk-info">
-              <button class="bk-bookback"><i class="bi bi-bookmark-heart-fill"></i
-                > Favourite</button>
+                <form th:action="@{/favourite}" method="POST">
+                  <button class="bk-bookback" type="submit" name="submit"><i class="bi bi-bookmark-heart-fill"></i>
+                    Favourite</button>
+                </form>
               </div>
             </dl>
             <h3 class="sub-title"></h3>
@@ -96,6 +98,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

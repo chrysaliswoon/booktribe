@@ -45,6 +45,9 @@ public class BookController {
 
     @PostMapping(path = "/favourite")
     public String favouriteBook(Model model, HttpSession session) {
+        //? When user click on Favourite button it will store in the user database in Redis
+        
+        //? Gets the existing user details through session
         User userDetails = (User) session.getAttribute("userDetails");
         model.addAttribute("userDetails", userDetails);
         return "profile";

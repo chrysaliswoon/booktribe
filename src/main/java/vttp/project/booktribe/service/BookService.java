@@ -87,7 +87,6 @@ public class BookService {
             String title = volInfo.getString("title");
             JsonArray authors = volInfo.getJsonArray("authors");
             JsonArray categories = volInfo.getJsonArray("categories");
-            // System.out.printf("%s, %s, %s, %s", id, imgUrl, title, authors.toString());
 
             // List<String> authorList = new ArrayList<String>();
             // for (int j = 0; j < authors.size(); j++) {
