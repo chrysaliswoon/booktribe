@@ -29,20 +29,23 @@
           <h1 data-th-text="${userDetails.username}"></h1>
         </div>
     </section>
-    <section class="bookAnimation">
-        <a data-th-href="@{/profile}">
-            <div class="book">
-                <div class="back"></div>
-                <div class="page6"></div>
-                <div class="page5"></div>
-                <div class="page4"></div>
-                <div class="page3"></div>
-                <div class="page2"></div>
-                <div class="page1"></div>
-                <div class="front"><h3><span data-th-text="${userDetails.username}"></span>'s Profile</h3></div>
-              </div>
-        </a>
+
+    <section>
+      <a data-th-href="@{/profile}">
+      <div class="book">
+        <span class="page turn"></span>
+        <span class="page turn"></span>
+        <span class="page turn"></span>
+        <span class="page turn"></span>
+        <span class="page turn"></span>
+        <span class="page turn"></span>
+        <span class="cover"></span>
+        <span class="page"></span>
+        <span class="cover turn"></span>
+      </div>
+    </a>
     </section>
+
 
 
     <!-- Bootstrap Bundle with Popper -->

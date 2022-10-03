@@ -8,7 +8,8 @@ import lombok.Data;
 @Data
 public class Quote {
 
-    private String text;
+    private String title;
+    private JsonArray lines;
     private String content;
     private String author;
     private String tag;
@@ -17,7 +18,7 @@ public class Quote {
     public static Quote create(JsonObject jo) {
 
         Quote quote = new Quote();
-        quote.setText(jo.getString("text"));
+        quote.setTitle(jo.getString("title"));
         quote.setAuthor(jo.getString("author"));
         quote.setTag(jo.getString("tag"));
 
@@ -26,17 +27,18 @@ public class Quote {
 
     public JsonObject toJson() {
         return Json.createObjectBuilder()
-        .add("text", text)
+        .add("title", title)
         .add("author", author)
         .add("tag", tag)
 
         .build();
     }
 
-    public static Quote createPoem(String text, String author, String tag) {
+    public static Quote createPoem(String title, String author, JsonArray lines, String tag) {
         Quote poemData = new Quote();
-        poemData.setText(text);
+        poemData.setTitle(title);
         poemData.setAuthor(author);
+        poemData.setLines(lines);
         poemData.setTag(tag);
 
         return poemData;
