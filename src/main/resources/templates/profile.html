@@ -72,22 +72,28 @@
         <h5 data-th-text="${userDetails.username}"></h5>
         <p data-th-text="${userDetails.email}"></p>
         <br>
+        <form action="/editUser" method="POST">
+          <button
+          type="button"
+          class="btn btn-outline-secondary"
+          data-mdb-ripple-color="dark"
+          style="z-index: 1"
+          >
+          Edit profile
+          </button>
+        </form>
+
+      <form action="/deleteUser" method="POST">
         <button
         type="button"
-        class="btn btn-outline-secondary"
+        class="btn btn-outline-danger"
         data-mdb-ripple-color="dark"
         style="z-index: 1"
-      >
-        Edit profile
-      </button>
-      <button
-      type="button"
-      class="btn btn-outline-danger"
-      data-mdb-ripple-color="dark"
-      style="z-index: 1"
-    >
-      Delete profile
-    </button>
+        >
+        Delete profile
+        </button>
+      </form>
+
       </div>
     </div>
     <div class="p-4 text-black">
