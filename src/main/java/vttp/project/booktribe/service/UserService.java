@@ -89,9 +89,6 @@ public class UserService {
         return payload;
     }
 
-
-
-
     //? Convert String --> JSON object
     public JsonObject toJson(String payload) {
         StringReader strReader = new StringReader(payload);

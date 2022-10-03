@@ -59,16 +59,6 @@ public class User{
         return userData;
     }
 
-    // public static User userWithoutProfile(JsonObject jsonObj) {
-    //     User userData = new User();
-
-    //     userData.setName(jsonObj.getString("name"));
-    //     userData.setUsername(jsonObj.getString("username"));
-    //     userData.setEmail(jsonObj.getString("email"));
-    //     userData.setProfile("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE=");
-
-    //     return userData;
-    // }
 
     //? Convert Model --> JSON object
     public JsonObject toJson() {
