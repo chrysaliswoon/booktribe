@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link th:href="@{/styles/about2.css}" rel="stylesheet" />
+    <link
+      th:href="@{https://fonts.googleapis.com/css2?family=Alegreya&display=swap}"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}"
+    />
+    <title>Book Tribe</title>
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top"
+      style="background-color: #6c584c"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/profile}">
+          <img
+            src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
+            alt="Avatar Logo"
+            style="width: 40px"
+            class="rounded-pill"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" th:href="@{/profile}"
+                ><i class="bi bi-house-heart-fill"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" th:href="@{/goals}"
+                ><i class="bi bi-bookmark-heart-fill"></i> Reading Goals
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" th:href="@{/tribe}"
+                ><i class="bi bi-person-hearts"></i> Book Tribe
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" th:href="@{/inspire}"
+                ><i class="bi bi-moon-stars-fill"></i> Inspire
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" th:href="@{/about}"
+                ><i class="bi bi-book-half"></i> About
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex" action="/search" method="GET">
+            <input
+              class="form-control me-2"
+              type="text"
+              name="book"
+              id="book"
+              placeholder="Book Name"
+            />
+            <button class="btn btn-outline-light" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+          <div style="margin-left: 50px">
+            <form class="d-flex" action="/logout" method="post">
+              <button class="btn btn-outline-light" type="submit">
+                <i class="bi bi-door-closed-fill"></i> Logout
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section style="padding: 100px">
+      <div class="head">
+        <div class="headerobjectswrapper">
+          <header>All About The Tribe</header>
+      </div>
+
+      <div class="subhead">Who are we and what do we do?</div>
+      <figure class="figure">
+      </figure>
+      
+    </section>
+
+    <!-- <section style="padding: 100px">
+      <div class="head">
+        <div class="headerobjectswrapper">
+          <header>All About The Tribe</header>
+        </div>
+
+        <div class="subhead">Who are we and what do we do?</div>
+      </div>
+      <div>
+        <link
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+
+        <figure class="figure">
+          <div class="section1 row">
+            <div class="col-xs-6">
+              <img
+                class="media"
+                src="https://media.giphy.com/media/8m57WEg0TbVggnqv8Y/giphy.gif"
+                alt=""
+                style="height: 500px; width: 500px"
+              />
+            </div>
+
+            <div class="col-xs-6">
+              <h2 class="font-weight-light">
+                Keep track of your reading habits
+              </h2>
+              <p style="font-size: 10px; color: #03225c">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                hendrerit adipiscing blandit. Aliquam placerat, velit a
+                fermentum fermentum, mi felis vehicula justo, a dapibus quam
+                augue non massa.
+              </p>
+              <p style="font-size: 10px; color: #03225c">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                hendrerit adipiscing blandit. Aliquam placerat, velit a
+                fermentum fermentum, mi felis vehicula justo, a dapibus quam
+                augue non massa.
+              </p>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section> -->
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
