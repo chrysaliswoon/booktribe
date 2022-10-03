@@ -1,7 +1,6 @@
 package vttp.project.booktribe.service;
 
 import java.io.StringReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -42,9 +41,9 @@ public class UserService {
         //? Convert the String to a JSON 
         userJson = toJson(payload);
 
-        //? Check if the key (email) exists in Redis
+        //? Check if the password is the same one in Redis
         String redis_password = userJson.getString("password");
-
+        
         //? Check if password is correct
         if (password.equals(redis_password)) {
             return true;
@@ -53,16 +52,41 @@ public class UserService {
         return false;
     }
 
+    public boolean checkProfile(String email) {
+
+        //? Get Redis Value from the Database
+        Optional<String> redisValue = userRepo.findUserByEmail(email);
+
+        if (redisValue.isEmpty()) {
+            return false;
+        } 
+
+        //? Store the Value as a string called Payload
+        String payload = redisValue.get();
+
+        //? Convert the String to a JSON 
+        userJson = toJson(payload);
+
+        //? Check if the profile exists in Redist
+        String redis_profile = userJson.getString("profile");
+        
+        //? Check if password is correct
+        if (redis_profile.isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
 
     public User userDetails(String email) {
         return User.loginUser(userJson);
     }
 
-    public Optional<Set<String>> getUsers() {
+    public Set<String> getUsers() {
         Optional<Set<String>> findUsers = userRepo.findAllUsers();
         Set<String> payload = findUsers.get();
         
-        return findUsers;
+        return payload;
     }
 
 

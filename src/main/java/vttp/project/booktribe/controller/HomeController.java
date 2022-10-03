@@ -13,7 +13,7 @@ import vttp.project.booktribe.model.User;
 import vttp.project.booktribe.service.UserService;
 
 @Controller
-public class HomePageController {
+public class HomeController {
     
     @Autowired
     UserService userSvc;
@@ -24,21 +24,6 @@ public class HomePageController {
         User userDetails = (User) session.getAttribute("userDetails");
         model.addAttribute("userDetails", userDetails);
         return "home";
-    }
-
-
-    // ? HOMEPAGE
-    @GetMapping(path = "/profile")
-    public String getProfilePage(Model model, HttpSession session) {
-        User userDetails = (User) session.getAttribute("userDetails");
-        model.addAttribute("userDetails", userDetails);
-        return "profile";
-    }
-
-    //? HOMEPAGE --> BOOK
-    @PostMapping(path="/search") 
-    public String postBookResults() {
-        return "search";
     }
 
 }

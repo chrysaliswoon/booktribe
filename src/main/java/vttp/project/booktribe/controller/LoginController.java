@@ -37,8 +37,8 @@ public class LoginController {
     @GetMapping(path = "/errorLogin")
     public String errorLogin() {
         String errorLogin = "Incorrect email or password";
-        System.out.print(errorLogin);
-        JOptionPane.showMessageDialog(null, errorLogin);
+        // System.out.print(errorLogin);
+        // JOptionPane.showMessageDialog(null, errorLogin);
         return "login";
     }
 
@@ -51,6 +51,7 @@ public class LoginController {
 
         //? Check with Redis Database
         Boolean loginStatus = userSvc.login(email, password);
+        Boolean profileExists = userSvc.checkProfile(email);
 
         //? If it is wrong, then inform the user that the username and password is incorrect
         if (loginStatus == false) {
@@ -59,6 +60,10 @@ public class LoginController {
         
         //? If it is correct, store in the session and go to the homepage
         User userDetails = userSvc.userDetails(email);
+        
+        if (profileExists == false) {
+            userDetails.setProfile("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE=");
+        }
         
         session.setAttribute("userDetails", userDetails);
         model.addAttribute("userDetails", userDetails);

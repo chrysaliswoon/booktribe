@@ -22,10 +22,10 @@ public class TribeController {
     // ? TRIBE PAGE
     @GetMapping(path = "/tribe")
     public String getBookTribe(Model model, HttpSession session) {
-        Optional<Set<String>> users = userSvc.getUsers();
+        userSvc.getUsers();
 
         User userDetails = (User) session.getAttribute("userDetails");
-        model.addAttribute("users", users.get());
+        model.addAttribute("users", userSvc.getUsers());
         model.addAttribute("userDetails", userDetails);
         return "tribe";
     }
