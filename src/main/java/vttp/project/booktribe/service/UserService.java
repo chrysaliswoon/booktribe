@@ -4,7 +4,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,20 +53,18 @@ public class UserService {
         return false;
     }
 
-    // public String users(String userID) {
-
-    //     Optional<String> redisValue = userRepo.findAllUsers(userID);
-    //     String payload = redisValue.get();
-
-    //     System.out.println(payload);
-
-    //     return payload; 
-    // }
-
 
     public User userDetails(String email) {
         return User.loginUser(userJson);
     }
+
+    public Optional<Set<String>> getUsers() {
+        Optional<Set<String>> findUsers = userRepo.findAllUsers();
+        Set<String> payload = findUsers.get();
+        
+        return findUsers;
+    }
+
 
 
 

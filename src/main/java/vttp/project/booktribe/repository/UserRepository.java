@@ -2,6 +2,7 @@ package vttp.project.booktribe.repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,6 +34,11 @@ public class UserRepository {
         if (null == value)
             return Optional.empty();
         return Optional.of(value);
+    }
+
+    public Optional<Set<String>> findAllUsers() {
+        Set<String> allKeys = template.keys("*");
+        return Optional.of(allKeys);
     }
     
 }
