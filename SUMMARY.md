@@ -1,4 +1,4 @@
 # Table of contents
 
-* [📚 Introduction](README.md)
+* [📚 BookTribe](README.md)
 * [APIs Used](apis-used.md)
