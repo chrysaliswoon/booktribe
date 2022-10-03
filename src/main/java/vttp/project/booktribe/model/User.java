@@ -67,6 +67,7 @@ public class User{
             .add("email", email)
             .add("password", password)
             .add("profile", profile)
+            
             .build();
     }
 

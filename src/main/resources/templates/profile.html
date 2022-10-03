@@ -25,15 +25,6 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #6c584c">
       <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/profile}">
-          <img
-            src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
-            alt="Avatar Logo" style="width: 40px" class="rounded-pill" />
-        </a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -69,25 +60,34 @@
       class="rounded-top text-white d-flex flex-row"
       style="background-color: #6c584c; height: 200px" 
     >
-      <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px">
+      <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px; height: 100px">
         <img
-          src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE="
-          alt="Generic placeholder image"
+        data-th-src="@{${userDetails.profile}}"
+          alt="Profile"
           class="img-fluid img-thumbnail mt-4 mb-2"
           style="width: 150px; z-index: 1"
         />
-        <button
-          type="button"
-          class="btn btn-outline-dark"
-          data-mdb-ripple-color="dark"
-          style="z-index: 1"
-        >
-          Edit profile
-        </button>
       </div>
       <div class="ms-3" style="margin-top: 130px">
         <h5 data-th-text="${userDetails.username}"></h5>
         <p data-th-text="${userDetails.email}"></p>
+        <br>
+        <button
+        type="button"
+        class="btn btn-outline-secondary"
+        data-mdb-ripple-color="dark"
+        style="z-index: 1"
+      >
+        Edit profile
+      </button>
+      <button
+      type="button"
+      class="btn btn-outline-danger"
+      data-mdb-ripple-color="dark"
+      style="z-index: 1"
+    >
+      Delete profile
+    </button>
       </div>
     </div>
     <div class="p-4 text-black">
