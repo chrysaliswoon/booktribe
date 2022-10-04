@@ -26,6 +26,11 @@ public class UserService {
         userRepo.create(email, payload);
     }
 
+    public void deleteProfile(String email) {
+        userRepo.deleteUser(email);
+        System.out.println("User has been deleted");
+    }
+
     public boolean login(String email, String password) {
 
         //? Get Redis Value from the Database

@@ -1,5 +1,6 @@
 package vttp.project.booktribe.repository;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -27,18 +28,29 @@ public class UserRepository {
     }
 
     //? READ user data
-    //? FIND USER
+    //? FIND SPECIFIC USER
     public Optional<String> findUserByEmail(String email) {
         ValueOperations<String, String> valueOp = template.opsForValue();
-        String value = valueOp.get(email);
-        if (null == value)
+        String user = valueOp.get(email);
+        if (null == user)
             return Optional.empty();
-        return Optional.of(value);
+        return Optional.of(user);
     }
 
+    //? UPDATE USER DETAILS
+    
+
+    //? FIND ALL USERS
     public Optional<Set<String>> findAllUsers() {
         Set<String> allKeys = template.keys("*");
         return Optional.of(allKeys);
+    }
+
+    //? DELETE USER
+    public Optional<String> deleteUser(String email) {
+        ValueOperations<String, String> valueOp = template.opsForValue();
+        String user = valueOp.getAndDelete(email);
+        return Optional.of(user);
     }
     
 }
