@@ -62,16 +62,27 @@ public class QuoteService {
         JsonObject poem = apiResult.getJsonObject(0);
 
         ArrayList<Quote> poemList = new ArrayList<>();
+
         String title = poem.getString("title");
         String author = poem.getString("author");
         JsonArray lines = poem.getJsonArray("lines");
-        // for (int i = 0; i < lines.size(); i++) {
-        //     String line = lines.getString(i);
-        //     System.out.print(line);
-        // }
         String lineCount = poem.getString("linecount");
+        
+        List<String> poemContent = new ArrayList<String>();
 
-        poemList.add(Quote.createPoem(title, author, lines, lineCount));
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.getString(i);
+            poemContent.add(line);
+        }
+        
+        List<String> poemLines = new ArrayList<>();
+        
+
+        for (String content: poemContent) {
+            poemLines.add(content);
+        }
+        poemList.add(Quote.createPoem(title, author, poemLines, lineCount));
+
         return poemList;
     }
 

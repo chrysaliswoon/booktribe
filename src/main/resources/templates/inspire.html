@@ -109,7 +109,7 @@
         <h6> - <span data-th-text="${p.author}"></span></h6>
 
         <br>
-        <p data-th-text="${p.lines}"></p>
+        <p data-th-each="c: ${p.poemContent}"><span data-th-text="${c}"></span></p>
       
       </div>
     </section>

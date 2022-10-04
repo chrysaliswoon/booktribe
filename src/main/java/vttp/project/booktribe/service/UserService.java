@@ -74,6 +74,7 @@ public class UserService {
         if (redis_profile.isBlank()) {
             return false;
         }
+
         return true;
     }
 
@@ -85,7 +86,7 @@ public class UserService {
     public Set<String> getUsers() {
         Optional<Set<String>> findUsers = userRepo.findAllUsers();
         Set<String> payload = findUsers.get();
-        
+
         return payload;
     }
 
