@@ -17,4 +17,5 @@
 
 ## 💭 Reflections & Learnings
 
-* [Page 1](reflections-and-learnings/page-1.md)
+* [Reflections](reflections-and-learnings/reflections.md)
+* [Summary & Overview](reflections-and-learnings/summary-and-overview.md)
