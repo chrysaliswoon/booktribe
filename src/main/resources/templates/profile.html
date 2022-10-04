@@ -70,45 +70,39 @@
         />
       </div>
       <div class="ms-3" style="margin-top: 130px">
-        <h5 data-th-text="${userDetails.username}"></h5>
+        <h5 data-th-text="${#strings.capitalize(userDetails.username)}"></h5>
         <p data-th-text="${userDetails.email}"></p>
-        <form action="/editUser" method="POST">
-          <button
-          type="submit"
-          class="btn btn-outline-secondary"
-          data-mdb-ripple-color="dark"
-          style="z-index: 1"
-          >
-          Edit profile
-          </button>
-        </form>
-        <form action="/deleteUser" method="POST">
-          <button
-          type="submit"
-          class="btn btn-outline-danger"
-          data-mdb-ripple-color="dark"
-          style="z-index: 1"
-          >
-          Delete profile
-          </button>
-        </form>
       </div>
     </div>
-
+    
     <div class="p-4 text-black">
       <div class="d-flex justify-content-end text-center py-1">
-        <div>
-          <p class="mb-1 h5">20</p>
-          <p class="small text-muted mb-0">Books</p>
+        <div class="mb-1 h5">
+            <form action="/editUser" method="POST">
+              <button
+              type="submit"
+              class="btn btn-outline-secondary"
+              data-mdb-ripple-color="dark"
+              style="z-index: 1"
+              >
+              Edit profile
+              </button>
+            </form>
         </div>
-        <div class="px-3">
-          <p class="mb-1 h5">10</p>
-          <p class="small text-muted mb-0">Followers</p>
-        </div>
-        <div>
-          <p class="mb-1 h5">30</p>
-          <p class="small text-muted mb-0">Following</p>
-        </div>
+
+        <div class="mb-1 h5 px-2">
+          <form action="/deleteUser" method="POST">
+            <button
+            type="submit"
+            class="btn btn-outline-danger"
+            data-mdb-ripple-color="dark"
+            style="z-index: 1"
+            >
+            Delete profile
+            </button>
+          </form>
+      </div>
+
       </div>
     </div>
 
@@ -116,7 +110,7 @@
       <div class="mb-5">
         <p class="lead fw-normal mb-1">
           What would you like to do today
-          <span data-th-text="${userDetails.username}"></span>?
+          <span data-th-text="${#strings.capitalize(userDetails.username)}"></span>?
         </p>
 
         <div class="row" style="padding-top: 30px;">

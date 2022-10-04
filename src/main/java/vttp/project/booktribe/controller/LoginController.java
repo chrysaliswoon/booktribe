@@ -33,16 +33,6 @@ public class LoginController {
         return "login";
     }
 
-
-    @GetMapping(path = "/errorLogin")
-    public String errorLogin() {
-        String errorLogin = "Incorrect email or password";
-        // System.out.print(errorLogin);
-        // JOptionPane.showMessageDialog(null, errorLogin);
-        return "login";
-    }
-
-
     //? LOGIN --> HOMEPAGE
     @PostMapping(path = "/login")
     public String postHomePage(Model model, @RequestBody MultiValueMap<String, String> form, HttpSession session) {
@@ -55,6 +45,8 @@ public class LoginController {
 
         //? If it is wrong, then inform the user that the username and password is incorrect
         if (loginStatus == false) {
+            String errorLogin = "Incorrect email or password";
+            model.addAttribute("errorMessage", errorLogin);
             return "login";
         }
         

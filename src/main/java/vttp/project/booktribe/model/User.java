@@ -22,14 +22,14 @@ public class User{
     }
 
     public User (String name, String username, String email) {
-        this.name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
+        this.name = name
         this.username = username;
         this.email = email;
     }
 
 
     public User (String name, String username, String email, String password, String profile) {
-        this.name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
+        this.name = name
         this.username = username;
         this.email = email;
         this.password = password;

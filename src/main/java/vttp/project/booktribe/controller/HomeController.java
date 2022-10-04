@@ -22,7 +22,9 @@ public class HomeController {
     @GetMapping("/home")
     public String getHomePage(Model model, HttpSession session) {
         User userDetails = (User) session.getAttribute("userDetails");
+        String name = userDetails.getName();
         model.addAttribute("userDetails", userDetails);
+        model.addAttribute("name", name);
         return "home";
     }
 

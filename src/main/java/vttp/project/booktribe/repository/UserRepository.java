@@ -38,7 +38,10 @@ public class UserRepository {
     }
 
     //? UPDATE USER DETAILS
-    
+    // public Optional<String> UpdateProfile(String email) {
+    //     ValueOperations<String, String> valueOp = template.opsForValue();
+    // }
+
 
     //? FIND ALL USERS
     public Optional<Set<String>> findAllUsers() {
