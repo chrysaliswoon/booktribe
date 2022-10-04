@@ -2,6 +2,7 @@
 
 * [📚 BookTribe](README.md)
 * [⚙ APIs Used](apis-used.md)
+* [💻 Project Set-up](project-set-up.md)
 
 ## 👩💻 Code Analysis
 
