@@ -90,18 +90,55 @@
             </form>
         </div>
 
-        <div class="mb-1 h5 px-2">
-          <form action="/deleteUser" method="POST">
-            <button
+        <button type="submit" class="btn btn-outline-danger" data-mdb-ripple-color="dark" style="z-index: 1" id="toastbtn">Delete Profile</button>
+  
+        <div class="toast">
+          <div class="toast-header">
+            <strong class="me-auto">Toast Header</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body">
+            <p>Some text inside the toast body</p>
+          </div>
+        </div>
+
+        <!-- <div class="mb-1 h5 px-2"> -->
+          <!-- <form action="/deleteUser" method="POST"> -->
+            <!-- <button
             type="submit"
             class="btn btn-outline-danger"
             data-mdb-ripple-color="dark"
             style="z-index: 1"
             >
             Delete profile
-            </button>
-          </form>
-      </div>
+            </button> -->
+            <!-- <button type="submit" class="btn btn-outline-danger" data-mdb-ripple-color="dark" style="z-index: 1" id="delete">Delete Profile</button> -->
+
+          <!-- </form> -->
+        <!-- </div> -->
+
+        <!-- <button type="button" class="btn btn-primary" id="myBtn">Show Toast</button> -->
+    
+        <!-- <div class="toast" id="popup">
+            <div class="toast-header">
+                <strong class="me-auto"><i class="bi bi-exclamation-diamond-fill"></i>Warning!</strong>
+                <small>Read carefully before proceeding</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Are you sure you want to delete your profile? All data connected to this profile will be lost if you do. 
+                <form action="/deleteUser" method="POST">
+                  <button
+                  type="submit"
+                  class="btn btn-outline-danger"
+                  data-mdb-ripple-color="dark"
+                  style="z-index: 1"
+                  >
+                  Yes! Delete My Profile
+                  </button> 
+                </form>
+            </div>
+        </div> -->
 
       </div>
     </div>
@@ -195,5 +232,8 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+
+    <script data-th-src="@{/js/profile.js}"></script>
+
   </body>
 </html>
