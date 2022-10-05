@@ -15,7 +15,6 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import vttp.project.booktribe.model.Book;
 import vttp.project.booktribe.service.BookService;
-import vttp.project.booktribe.service.QuoteService;
 
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,7 +22,6 @@ public class AppRestController {
 
     @Autowired
     private BookService bookSvc;
-    private QuoteService quoteSvc;
 
     //? Get all books
     @GetMapping(path = "/books/{id}") 

@@ -1,7 +1,6 @@
 package vttp.project.booktribe.model;
 
 import java.io.StringReader;
-import java.util.List;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
@@ -15,7 +14,6 @@ public class Book {
     private String id;
     private String title;
     private String subtitle;
-    // private String authors;
     private JsonArray authors;
     private JsonArray categories;
     private String purchaseDate;

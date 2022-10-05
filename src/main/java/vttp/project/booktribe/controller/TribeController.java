@@ -1,8 +1,5 @@
 package vttp.project.booktribe.controller;
 
-import java.util.Optional;
-import java.util.Set;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,5 @@
 document.getElementById("toastbtn").onclick = function() {
-    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-    var toastList = toastElList.map(function(toastEl) {
-      return new bootstrap.Toast(toastEl)
-    })
-    toastList.forEach(toast => toast.show()) 
-  }
+  var myAlert =document.getElementById('toastNotice');//select id of toast
+  var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
+  bsAlert.show();//show it
+}

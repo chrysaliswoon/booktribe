@@ -7,9 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +20,10 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.project.booktribe.model.Book;
-import vttp.project.booktribe.repository.ShelfRepository;
 
 @Service
 public class BookService {
 
-    // ? Instantiate the Book Repository to use Redis database
-    @Autowired
-    private ShelfRepository bookRepo;
 
     // ? API URL
     private static String apiExploreBookUrl = "https://www.googleapis.com/books/v1/volumes";

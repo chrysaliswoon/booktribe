@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import vttp.project.booktribe.model.User;
 import vttp.project.booktribe.service.UserService;
 
-import javax.swing.JOptionPane;
 
 @Controller
 public class LoginController {

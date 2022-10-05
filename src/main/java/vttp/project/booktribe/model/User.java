@@ -1,7 +1,6 @@
 package vttp.project.booktribe.model;
 
 import java.io.StringReader;
-import java.util.ArrayList;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;

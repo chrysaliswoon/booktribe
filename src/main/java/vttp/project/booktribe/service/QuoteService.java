@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,7 +16,6 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.project.booktribe.model.Quote;
-import vttp.project.booktribe.repository.QuoteRepository;
 
 @Service
 public class QuoteService {
@@ -27,8 +23,6 @@ public class QuoteService {
     private static final String poemAPI = "https://poetrydb.org/random";
     private static final String quoteAPI = "https://api.quotable.io/random";
 
-    @Autowired
-    private QuoteRepository quoteRepo;
 
     public List<Quote> getPoem() {
         

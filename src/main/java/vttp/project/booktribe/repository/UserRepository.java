@@ -1,7 +1,6 @@
 package vttp.project.booktribe.repository;
 
-import java.lang.StackWalker.Option;
-import java.util.List;
+
 import java.util.Optional;
 import java.util.Set;
 
@@ -11,7 +10,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import redis.clients.jedis.ScanResult;
 
 
 @Repository
