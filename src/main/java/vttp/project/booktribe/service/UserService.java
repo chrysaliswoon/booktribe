@@ -20,10 +20,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    private JsonObject userJson; 
+    // private JsonObject userJson; 
 
-    public void createProfile(String email, String payload) {
-        userRepo.create(email, payload);
+    public void createProfile(User user) {
+        // userRepo.create(email, payload);
+        userRepo.create(user.getEmail(), user.toMap());
     }
 
     public void deleteProfile(String email) {
@@ -34,23 +35,15 @@ public class UserService {
     public boolean login(String email, String password) {
 
         //? Get Redis Value from the Database
-        Optional<String> redisValue = userRepo.findUserByEmail(email);
+        Optional<User> redisValue = userRepo.findUserByEmail(email);
 
         if (redisValue.isEmpty()) {
             return false;
         } 
-
-        //? Store the Value as a string called Payload
-        String payload = redisValue.get();
-
-        //? Convert the String to a JSON 
-        userJson = toJson(payload);
-
-        //? Check if the password is the same one in Redis
-        String redis_password = userJson.getString("password");
         
         //? Check if password is correct
-        if (password.equals(redis_password)) {
+        String redisPassword = redisValue.get().getPassword();
+        if (password.equals(redisPassword)) {
             return true;
         }
 
@@ -60,20 +53,15 @@ public class UserService {
     public boolean checkProfile(String email) {
 
         //? Get Redis Value from the Database
-        Optional<String> redisValue = userRepo.findUserByEmail(email);
+        Optional<User> redisValue = userRepo.findUserByEmail(email);
 
         if (redisValue.isEmpty()) {
             return false;
         } 
 
-        //? Store the Value as a string called Payload
-        String payload = redisValue.get();
-
-        //? Convert the String to a JSON 
-        userJson = toJson(payload);
 
         //? Check if the profile exists in Redist
-        String redis_profile = userJson.getString("profile");
+        String redis_profile = redisValue.get().getProfile();
         
         //? Check if password is correct
         if (redis_profile.isBlank()) {
@@ -85,7 +73,8 @@ public class UserService {
 
 
     public User userDetails(String email) {
-        return User.loginUser(userJson);
+        Optional<User> userOpt = userRepo.findUserByEmail(email);
+        return userOpt.get();
     }
 
     public Set<String> getUsers() {

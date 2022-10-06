@@ -20,6 +20,7 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.project.booktribe.model.Book;
+import vttp.project.booktribe.model.Shelf;
 
 @Service
 public class BookService {
@@ -156,6 +157,56 @@ public class BookService {
             
         return list;
         
+    }
+
+    //? Favourite specific book
+
+    public List<Shelf> addBook(String bookID) {
+
+        // URI (URL) parameters
+        Map<String, String> urlParams = new HashMap<>();
+        urlParams.put("id", bookID);
+
+        // ? Create endpoint URL with query string
+        String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
+                .queryParam("key", apiKey)
+                .buildAndExpand(urlParams)
+                .toUriString();
+
+        // ? Create GET Request
+        RequestEntity<Void> req = RequestEntity.get(url).build();
+
+        // ? Make call to Book API
+        RestTemplate template = new RestTemplate();
+        ResponseEntity<String> res;
+
+        try {
+            res = template.exchange(req, String.class);
+        } catch (Exception ex) {
+            System.err.printf("Error: ", ex.getMessage());
+            return Collections.emptyList();
+        }
+
+        // ? Get body with the payload
+        String payload = res.getBody();
+
+        // ? Convert payload to JSON object
+        Reader strReader = new StringReader(payload);
+
+        // ? Create JSONReader from Reader
+        JsonReader jsonReader = Json.createReader(strReader);
+
+        // ? Reads payload as JSON object
+        JsonObject bookResult = jsonReader.readObject();
+
+        JsonObject volInfo = bookResult.getJsonObject("volumeInfo");
+        String title = volInfo.getString("title");
+
+        ArrayList<Shelf> bookshelf = new ArrayList<>();
+        bookshelf.add(Shelf.addToShelf(bookID, title));
+        
+        return bookshelf;
+
     }
 
 

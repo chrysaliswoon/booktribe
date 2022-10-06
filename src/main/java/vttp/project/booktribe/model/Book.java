@@ -46,6 +46,7 @@ public class Book {
         return bookData;
     }
 
+
     //? Creates it as a Json String or as a Json Object
 
     public static Book create(JsonObject jsonObj) {

@@ -42,7 +42,6 @@ public class AppConfig {
 
         //? Create a factory for Jedis connection
         JedisConnectionFactory jedisFac = new JedisConnectionFactory(redisConfig, jedisConfig);
-
         jedisFac.afterPropertiesSet();
 
         //? Create RedisTemplate and configure it
@@ -55,3 +54,5 @@ public class AppConfig {
     }
 
 }
+
+

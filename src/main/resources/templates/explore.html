@@ -95,7 +95,8 @@
             </div>
             <div class="bk-info" >
               <form th:action="@{/favourite}" method="POST">
-                <button class="bk-bookback" type="submit" name="submit"><i class="bi bi-bookmark-heart-fill"></i>
+                <input type="hidden" name="favourite" data-th-value="${r.id}">
+                <button class="bk-bookback" type="submit"><i class="bi bi-bookmark-heart-fill"></i>
                   Favourite</button>
               </form>
               <br>

@@ -1,6 +1,8 @@
 package vttp.project.booktribe.model;
 
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -56,6 +58,17 @@ public class User{
         userData.setProfile(jsonObj.getString("profile"));
 
         return userData;
+    }
+
+    public Map<String, String> toMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("name", this.name);
+        map.put("username", this.username);
+        map.put("email", this.email);
+        map.put("password", this.password);
+        map.put("profile", this.profile);
+
+        return map;
     }
 
 

@@ -41,14 +41,14 @@ public class RegisterController {
 
         User user = new User(name, username, email, password, profile);
 
-        //?  Convert User model -> JSON object
-        JsonObject userObj = user.toJson();
+        // //?  Convert User model -> JSON object
+        // JsonObject userObj = user.toJson();
 
-        //? Convert JSON object -> String
-        String payload = userObj.toString();
+        // //? Convert JSON object -> String
+        // String payload = userObj.toString();
 
         //? Store data in Redis Database
-        userSvc.createProfile(email, payload);
+        userSvc.createProfile(user);
 
         return "/login";
     } 
