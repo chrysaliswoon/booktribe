@@ -50,12 +50,13 @@ public class BookController {
     public String favouriteBook(Model model, HttpSession session, @RequestBody MultiValueMap<String, String> form) {
         //? When user click on Favourite button it will get the current book ID
         String bookID = form.getFirst("favourite");
-        List<Shelf> addBook = bookSvc.addBook(bookID);
-        System.out.print(addBook);
 
-        
         //? Gets the existing user details through session
         User userDetails = (User) session.getAttribute("userDetails");
+        List<String> favouriteBook = bookSvc.addBook(userDetails.getEmail().toString(), bookID);  
+        userDetails.setFavourite(bookID);
+
+        model.addAttribute("shelf", favouriteBook);
         model.addAttribute("userDetails", userDetails);
         return "profile";
     }

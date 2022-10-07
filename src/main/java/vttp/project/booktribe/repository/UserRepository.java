@@ -26,7 +26,6 @@ public class UserRepository {
     //? CREATE new user
     public void create(String redisKey, Map<String, String> payload) {
         HashOperations<String, String, String> hashOp = template.opsForHash();
-        // ValueOperations<String, String> valueOp = template.opsForValue();
         hashOp.putAll(redisKey, payload);
     }
 
@@ -34,15 +33,15 @@ public class UserRepository {
     //? FIND SPECIFIC USER
     public Optional<User> findUserByEmail(String email) {
         HashOperations<String, String, String> hashOp = template.opsForHash();
-        // ValueOperations<String, String> valueOp = template.opsForValue();
-        // String user = valueOp.get(email);
         String redisName = hashOp.get(email, "name");
         String redisUserName = hashOp.get(email, "username");
         String redisEmail = hashOp.get(email, "email");
         String redisPassword = hashOp.get(email, "password");
         String redisProfile = hashOp.get(email, "profile");
+        String redisBook = hashOp.get(email, "favourite");
 
-        User user = new User(redisName, redisUserName, redisEmail, redisPassword, redisProfile);
+
+        User user = new User(redisName, redisUserName, redisEmail, redisPassword, redisProfile, redisBook);
         if (null == redisEmail)
             return Optional.empty();
         return Optional.of(user);
@@ -61,10 +60,8 @@ public class UserRepository {
     }
 
     //? DELETE USER
-    public Optional<String> deleteUser(String email) {
-        ValueOperations<String, String> valueOp = template.opsForValue();
-        String user = valueOp.getAndDelete(email);
-        return Optional.of(user);
+    public void deleteUser(String email) {
+        template.delete(email);
     }
     
 }

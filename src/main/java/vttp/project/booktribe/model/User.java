@@ -17,6 +17,7 @@ public class User{
     private String email;
     private String password;
     private String profile;
+    private String favourite;
 
     public User() {
 
@@ -29,6 +30,15 @@ public class User{
     }
 
 
+    public User (String name, String username, String email, String password, String profile, String favourite) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.profile = profile;
+        this.favourite = favourite;
+    }
+
     public User (String name, String username, String email, String password, String profile) {
         this.name = name;
         this.username = username;
@@ -37,14 +47,16 @@ public class User{
         this.profile = profile;
     }
 
-	public static User createUser(String name, String username, String email, String password, String profile) {
-        User userData = new User(name, username, email, password, profile);
+    public static User createUser(String name, String username, String email, String password, String profile,  String favourite) {
+        User userData = new User(name, username, email, password, profile, favourite);
 
         userData.setName(name);
         userData.setUsername(username);
         userData.setEmail(email);
         userData.setPassword(password);
         userData.setProfile(profile);
+        userData.setFavourite(favourite);
+
 
         return userData;
     }

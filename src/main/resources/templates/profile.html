@@ -139,14 +139,23 @@
       </div>
     </div>
     <div>
-      <p class="lead fw-normal mb-1">
+      <p class="lead fw-normal mb-1" >
         Bookshelf
       </p>
-      <div class="container px-4">
-        <div class="container" style="padding-top: 30px;">
+      <div class="container px-4" data-th-each="s: ${shelf}">
+        <div class="container" style ="padding-top: 30px;">
           <div class="row gx-5">
             <div class="col-4">
-              <div class="p-3 book books-1"></div>
+              <a th:href="@{'/search/' + ${s.id}}">
+                <div class="p-3 book books-1">
+                  <h5 data-th-text="${s.title}" style="text-align:center"></h5>
+                  <br>
+                  <br>
+                  <br>
+                  <p>Authors: </p>
+                  <p data-th-text="${s.authors}"></p>
+                </div>
+              </a>
             </div>
             <div class="col-4">
               <div class="p-3 book books-1"></div>

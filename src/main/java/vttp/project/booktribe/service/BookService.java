@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +22,19 @@ import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.project.booktribe.model.Book;
 import vttp.project.booktribe.model.Shelf;
+import vttp.project.booktribe.model.User;
+import vttp.project.booktribe.repository.BookRespository;
 
 @Service
 public class BookService {
 
+    @Autowired
+    private BookRespository bookRepo;
+
 
     // ? API URL
     private static String apiExploreBookUrl = "https://www.googleapis.com/books/v1/volumes";
-    private static String apiSpecificBookUrl = "https://www.googleapis.com/books/v1/volumes/{id}";
+    
 
     // ? Inject value into fields
     @Value("${API_KEY}")
@@ -75,8 +81,15 @@ public class BookService {
         for (int i = 0; i < bookData.size(); i++) {
             JsonObject object = bookData.getJsonObject(i);
             String id = object.getString("id");
-            // System.out.println(id);
             JsonObject volInfo = object.getJsonObject("volumeInfo");
+
+            String subtitle;
+            if (!volInfo.containsKey("subtitle")) {
+                subtitle = "no subtitle available";
+            } else {
+                subtitle = volInfo.getString("subtitle");
+            }
+
             JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
             String imgUrl = imgLinks.getString("thumbnail");
             String title = volInfo.getString("title");
@@ -100,16 +113,18 @@ public class BookService {
 
     //? Get specific book details
     public List<Book> bookDetails(String id) {
-
+        String apiSpecificBookUrl = "https://www.googleapis.com/books/v1/volumes/" + id;
+        System.out.println(apiSpecificBookUrl);
         // URI (URL) parameters
-        Map<String, String> urlParams = new HashMap<>();
-        urlParams.put("id", id);
+        // Map<String, String> urlParams = new HashMap<>();
+        // urlParams.put("id", id);
 
         // ? Create endpoint URL with query string
         String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
                 .queryParam("key", apiKey)
-                .buildAndExpand(urlParams)
                 .toUriString();
+
+        System.out.println(url);
 
         // ? Create GET Request
         RequestEntity<Void> req = RequestEntity.get(url).build();
@@ -138,11 +153,18 @@ public class BookService {
         JsonObject bookResult = jsonReader.readObject();
 
         ArrayList<Book> list = new ArrayList<>();
-            JsonObject volInfo = bookResult.getJsonObject("volumeInfo");
-            JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
-            String imgUrl = imgLinks.getString("thumbnail");
-            String title = volInfo.getString("title");
-            String subtitle = volInfo.getString("subtitle");
+        JsonObject volInfo = bookResult.getJsonObject("volumeInfo");
+        String subtitle;
+
+        if (!volInfo.containsKey("subtitle")) {
+            subtitle = "no subtitle available";
+        } else {
+            subtitle = volInfo.getString("subtitle");
+        }
+
+        JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
+        String imgUrl = imgLinks.getString("thumbnail");
+        String title = volInfo.getString("title");
             String description = volInfo.getString("description");
             JsonArray authors = volInfo.getJsonArray("authors");
             // List<String> authorList = new ArrayList<String>();
@@ -160,54 +182,27 @@ public class BookService {
     }
 
     //? Favourite specific book
+    public List<String> addBook(String user, String bookID) {
 
-    public List<Shelf> addBook(String bookID) {
+        List<String> shelf = new ArrayList<>();
+        shelf.add(bookID);
 
-        // URI (URL) parameters
-        Map<String, String> urlParams = new HashMap<>();
-        urlParams.put("id", bookID);
+        bookRepo.addBook(user, bookID);
 
-        // ? Create endpoint URL with query string
-        String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
-                .queryParam("key", apiKey)
-                .buildAndExpand(urlParams)
-                .toUriString();
-
-        // ? Create GET Request
-        RequestEntity<Void> req = RequestEntity.get(url).build();
-
-        // ? Make call to Book API
-        RestTemplate template = new RestTemplate();
-        ResponseEntity<String> res;
-
-        try {
-            res = template.exchange(req, String.class);
-        } catch (Exception ex) {
-            System.err.printf("Error: ", ex.getMessage());
-            return Collections.emptyList();
-        }
-
-        // ? Get body with the payload
-        String payload = res.getBody();
-
-        // ? Convert payload to JSON object
-        Reader strReader = new StringReader(payload);
-
-        // ? Create JSONReader from Reader
-        JsonReader jsonReader = Json.createReader(strReader);
-
-        // ? Reads payload as JSON object
-        JsonObject bookResult = jsonReader.readObject();
-
-        JsonObject volInfo = bookResult.getJsonObject("volumeInfo");
-        String title = volInfo.getString("title");
-
-        ArrayList<Shelf> bookshelf = new ArrayList<>();
-        bookshelf.add(Shelf.addToShelf(bookID, title));
-        
-        return bookshelf;
-
+        return shelf;
     }
+
+    //? Get book title
+    // public void getTitle(String bookID) {
+
+    //     // ? Create endpoint URL with query string
+    //     String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
+    //         .queryParam("key", apiKey)
+    //         .
+    //         .toUriString();
+
+
+    // }
 
 
 }

@@ -116,7 +116,8 @@ a:visited {
 /*------ background-pic ------*/
 
 .books-1 {
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/945546/3433202-d2a1bea8a58cd447.png');
+  /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/945546/3433202-d2a1bea8a58cd447.png'); */
+  color: whitesmoke;
   background-size: 180px 255px;
 }
 
