@@ -30,9 +30,7 @@ public class ProfileController {
     public String getProfilePage(Model model, HttpSession session) {
         User userDetails = (User) session.getAttribute("userDetails");
         String bookID = userDetails.getFavourite();
-        // System.out.println("BookID >> " + bookID);
         List<Book> bookDetails = bookSvc.bookDetails(bookID);
-        System.out.print(bookDetails);
         
         model.addAttribute("shelf", bookDetails);
         model.addAttribute("userDetails", userDetails);

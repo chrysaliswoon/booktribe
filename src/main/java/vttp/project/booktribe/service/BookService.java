@@ -192,17 +192,6 @@ public class BookService {
         return shelf;
     }
 
-    //? Get book title
-    // public void getTitle(String bookID) {
-
-    //     // ? Create endpoint URL with query string
-    //     String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
-    //         .queryParam("key", apiKey)
-    //         .
-    //         .toUriString();
-
-
-    // }
 
 
 }
