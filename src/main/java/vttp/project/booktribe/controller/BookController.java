@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import vttp.project.booktribe.model.Book;
-import vttp.project.booktribe.model.Shelf;
 import vttp.project.booktribe.model.User;
 import vttp.project.booktribe.service.BookService;
 

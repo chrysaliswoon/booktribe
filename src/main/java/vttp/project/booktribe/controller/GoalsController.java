@@ -25,12 +25,20 @@ public class GoalsController {
         User userDetails = (User) session.getAttribute("userDetails");
         String bookID = userDetails.getFavourite();
         List<Book> bookDetails = bookSvc.bookDetails(bookID);
-
-        System.out.print(bookDetails);
         
         model.addAttribute("shelf", bookDetails);
         model.addAttribute("userDetails", userDetails);
         return "goals";
+    }
+
+    //? REVIEWS PAGE
+    @GetMapping(path="/review") 
+    public String reviewBook(Model model,HttpSession session) {
+        User userDetails = (User) session.getAttribute("userDetails");
+
+        model.addAttribute("userDetails", userDetails);
+        return "review";
+
     }
 
 }

@@ -4,9 +4,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +19,6 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.project.booktribe.model.Book;
-import vttp.project.booktribe.model.Shelf;
-import vttp.project.booktribe.model.User;
 import vttp.project.booktribe.repository.BookRespository;
 
 @Service
@@ -114,17 +110,11 @@ public class BookService {
     //? Get specific book details
     public List<Book> bookDetails(String id) {
         String apiSpecificBookUrl = "https://www.googleapis.com/books/v1/volumes/" + id;
-        System.out.println(apiSpecificBookUrl);
-        // URI (URL) parameters
-        // Map<String, String> urlParams = new HashMap<>();
-        // urlParams.put("id", id);
 
         // ? Create endpoint URL with query string
         String url = UriComponentsBuilder.fromUriString(apiSpecificBookUrl)
                 .queryParam("key", apiKey)
                 .toUriString();
-
-        System.out.println(url);
 
         // ? Create GET Request
         RequestEntity<Void> req = RequestEntity.get(url).build();
