@@ -91,7 +91,7 @@
                   </div>
 
                   <!-- Conditional message -->
-                  <p data-th-if="${loginStatus == false}"><span data-th-text="${errorMessage}"></span></p>
+                  <p data-th-if="${loginStatus == false}" style="color: red;"><span data-th-text="${errorMessage}"></span></p>
 
                   <!-- Submit button -->
                   <button type="submit" class="btn btn-primary btn-block mb-4">
