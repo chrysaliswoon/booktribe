@@ -36,7 +36,7 @@
               Welcome to your<br />
               <span style="color: hsl(218, 86%, 62%)">Virtual Bookshelf</span>
             </h1>
-            <p class="mb-4 opacity-70" style="color: hsl(220, 7%, 56%)">
+            <p class="mb-4 opacity-70" style="color: whitesmoke">
               We'll help you track of your existing books and which books you
               have read so you can focus on the content. See how your reading
               develops over time and use that to help you pick better books.
@@ -90,21 +90,14 @@
                     />
                   </div>
 
+                  <!-- Conditional message -->
+                  <p data-th-if="${loginStatus == false}"><span data-th-text="${errorMessage}"></span></p>
+
                   <!-- Submit button -->
                   <button type="submit" class="btn btn-primary btn-block mb-4">
                     Log In
                   </button>
                 </form>
-
-                <!-- Bootstrap Toast Alert -->
-                <!-- <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-                  <div class="d-flex">
-                    <div class="toast-body">
-                    <span data-th-text="${errorMessage}"></span>
-                   </div>
-                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                  </div>
-                </div> -->
 
                 <div class="text-center">
                   <form th:action="@{/register}" method="POST">

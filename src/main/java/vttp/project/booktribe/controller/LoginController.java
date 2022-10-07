@@ -44,8 +44,10 @@ public class LoginController {
 
         //? If it is wrong, then inform the user that the username and password is incorrect
         if (loginStatus == false) {
-            String errorLogin = "Incorrect email or password";
-            model.addAttribute("errorMessage", errorLogin);
+            model.addAttribute("loginStatus", loginStatus);
+
+            String errorMessage = "Incorrect email or password";
+            model.addAttribute("errorMessage", errorMessage);
             return "login";
         }
         
