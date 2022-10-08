@@ -80,7 +80,6 @@ public class BookService {
             JsonObject volInfo = object.getJsonObject("volumeInfo");
 
             String subtitle;
-            
             if (!volInfo.containsKey("subtitle")) {
                 subtitle = "no subtitle available";
             } else {
