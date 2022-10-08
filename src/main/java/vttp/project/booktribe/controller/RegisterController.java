@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jakarta.json.JsonObject;
 import vttp.project.booktribe.model.User;
 import vttp.project.booktribe.service.UserService;
 
@@ -40,12 +39,6 @@ public class RegisterController {
         String profile = form.getFirst("profile");
 
         User user = new User(name, username, email, password, profile);
-
-        // //?  Convert User model -> JSON object
-        // JsonObject userObj = user.toJson();
-
-        // //? Convert JSON object -> String
-        // String payload = userObj.toString();
 
         //? Store data in Redis Database
         userSvc.createProfile(user);

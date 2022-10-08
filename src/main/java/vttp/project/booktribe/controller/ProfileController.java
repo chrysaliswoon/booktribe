@@ -45,13 +45,24 @@ public class ProfileController {
 
     //? UPDATE PROFILE
     @PostMapping(path = "/editUser") 
-    public String editUser() {
+    public String editUser(Model model, HttpSession session) {
+
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
+        return "editUser";
+    }
+
+    @PostMapping(path = "/update") 
+    public String updateProfilePage(Model model, HttpSession session) {
+
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
         return "profile";
     }
 
     //? DELETE PROFILE
     @PostMapping(path = "/deleteUser") 
-    public String deleteUser(Model model, HttpSession session) {
+    public String deleteProfilePage(Model model, HttpSession session) {
         User userDetails = (User) session.getAttribute("userDetails");
         String userEmail = userDetails.getEmail();
         userSvc.deleteProfile(userEmail);

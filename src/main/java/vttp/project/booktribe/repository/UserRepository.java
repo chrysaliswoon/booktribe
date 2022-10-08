@@ -48,9 +48,10 @@ public class UserRepository {
     }
 
     //? UPDATE USER DETAILS
-    // public Optional<String> UpdateProfile(String email) {
-    //     ValueOperations<String, String> valueOp = template.opsForValue();
+    // public void updateUser(String redisKey, Map<String, String> payload) {
+
     // }
+
 
 
     //? FIND ALL USERS

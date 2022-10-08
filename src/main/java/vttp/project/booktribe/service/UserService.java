@@ -20,8 +20,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    // private JsonObject userJson; 
-
     public void createProfile(User user) {
         // userRepo.create(email, payload);
         userRepo.create(user.getEmail(), user.toMap());
