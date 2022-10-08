@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import vttp.project.booktribe.model.Book;
 import vttp.project.booktribe.model.User;
@@ -53,9 +55,19 @@ public class ProfileController {
     }
 
     @PostMapping(path = "/update") 
-    public String updateProfilePage(Model model, HttpSession session) {
-
+    public String updateProfilePage(Model model, HttpSession session, @RequestBody MultiValueMap<String, String> form) {
         User userDetails = (User) session.getAttribute("userDetails");
+
+        String name = form.getFirst("name");
+        String password = form.getFirst("password");
+        String profile = form.getFirst("profile");
+
+        String email = userDetails.getEmail();
+
+        userSvc.updateProfile(email, "name", name);
+        userSvc.updateProfile(email, "password", password);
+        userSvc.updateProfile(email, "profile", profile);
+
         model.addAttribute("userDetails", userDetails);
         return "profile";
     }

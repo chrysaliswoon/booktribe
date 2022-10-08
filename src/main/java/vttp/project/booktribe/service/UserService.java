@@ -21,8 +21,11 @@ public class UserService {
     private UserRepository userRepo;
 
     public void createProfile(User user) {
-        // userRepo.create(email, payload);
         userRepo.create(user.getEmail(), user.toMap());
+    }
+
+    public void updateProfile(String email, String key, String value) {
+        userRepo.updateUser(email, key, value);
     }
 
     public void deleteProfile(String email) {

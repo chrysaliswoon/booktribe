@@ -59,7 +59,7 @@
         style="width: 200px; z-index: 1" />
     </div>
     <div class="ms-3" style="margin-top: 130px">
-      <h5 data-th-text="${#strings.capitalize(userDetails.username)}"></h5>
+      <h5 data-th-text="${#strings.capitalize(userDetails.name)}"></h5>
       <p data-th-text="${userDetails.email}"></p>
     </div>
   </div>
@@ -111,7 +111,7 @@
     <div class="mb-5">
       <p class="lead fw-normal mb-1">
         What would you like to do today
-        <span data-th-text="${#strings.capitalize(userDetails.username)}"></span>?
+        <span data-th-text="${#strings.capitalize(userDetails.name)}"></span>?
       </p>
 
       <div class="row" style="padding-top: 30px;">

@@ -42,16 +42,17 @@ public class UserRepository {
 
 
         User user = new User(redisName, redisUserName, redisEmail, redisPassword, redisProfile, redisBook);
+        
         if (null == redisEmail)
             return Optional.empty();
         return Optional.of(user);
     }
 
     //? UPDATE USER DETAILS
-    // public void updateUser(String redisKey, Map<String, String> payload) {
-
-    // }
-
+    public void updateUser(String key, String hashkey, String value) {
+        HashOperations<String, String, String> hashOp = template.opsForHash();
+        hashOp.put(key, hashkey, value);
+    }
 
 
     //? FIND ALL USERS

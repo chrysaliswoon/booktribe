@@ -47,6 +47,13 @@ public class User{
         this.profile = profile;
     }
 
+    public User(String name, String username, String password, String profile) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.profile = profile;
+    }
+
     public static User createUser(String name, String username, String email, String password, String profile,  String favourite) {
         User userData = new User(name, username, email, password, profile, favourite);
 

@@ -26,7 +26,7 @@
   <body>
     <div class="registration-form">
       <form action="/update" method="POST">
-        <h1>Update <span data-th-text="${#strings.capitalize(userDetails.username)}"></span>'s Profile</h1>
+        <h1 style="text-align: center;">Update <span data-th-text="${#strings.capitalize(userDetails.username)}"></span>'s Profile</h1>
         <div class="form-icon">
           <span><i class="bi bi-person-fill"></i></span>
         </div>
@@ -48,16 +48,6 @@
             id="username"
             name="username"
             data-th-value="${userDetails.username}"
-          />
-        </div>
-        <div class="form-group">
-          <label for="name">Email:</label>
-          <input
-            type="email"
-            class="form-control item"
-            id="email"
-            name="email"
-            data-th-value="${userDetails.email}"
           />
         </div>
         <div class="form-group">
