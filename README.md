@@ -177,8 +177,73 @@ When users click on the "Edit Profile" button, they will be directed to a form p
     }
 ```
 
+If the user wishes to delete their profile, they can click on the "Delete Profile" button. Upon clicking it, a [Bootstrap Toast Alert](https://getbootstrap.com/docs/4.3/components/toasts/) will pop-up warning the user that proceeding with the deletion will result in permanent removal of their data from the Redis Database.
 
 ![Delete Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/deleteProfile.png)
+
+``` java
+    //? DELETE PROFILE
+    @PostMapping(path = "/deleteUser") 
+    public String deleteProfilePage(Model model, HttpSession session) {
+        User userDetails = (User) session.getAttribute("userDetails");
+        String userEmail = userDetails.getEmail();
+        userSvc.deleteProfile(userEmail);
+        
+        return "login";
+    }
+```
+
+To enable the Bootstrap Toast pop-up, we need to initialise the Toast using a combination of Javascript and HTML. 
+
+``` html
+      <div class="mb-1 h5 px-2">
+        <!-- button to initialize toast -->
+        <button type="button" class="btn btn-outline-danger" id="toastbtn">Delete Profile</button>
+        <!-- Toast -->
+        <!-- Flexbox container for aligning the toasts -->
+        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center">
+
+          <!-- Then put toasts within -->
+          <div id="toastNotice" class="toast" role="alert">
+            <div class="toast-header">
+              <i class="bi bi-exclamation-triangle-fill" style="color: red;"></i>
+
+              <strong class="me-auto" style="color: red;">WARNING</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              <strong class="me-auto">DELETE ACCOUNT</strong>
+              <p>Are you sure you want to delete your account?</p>
+              <p>If you delete your account, you will permanently lose your profile and all data associated with it.</p>
+
+              <form action="/deleteUser" method="POST">
+                <div class="mt-2 pt-2 border-top lh-base">
+                  <button type="submit" class="btn btn-danger">Delete Account</button>
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="toast">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+```
+
+The toast will trigger upon button click which they will get from the buton id "toastbtn", and show the warning information.
+
+``` javascript
+document.getElementById("toastbtn").onclick = function() {
+  var myAlert =document.getElementById('toastNotice');//select id of toast
+  var bsAlert = new bootstrap.Toast(myAlert);//inizialize it
+  bsAlert.show();//show it
+}
+```
+
+In order for Javascript to work, you will need to import the script and make sure the Javascript file is in the static folder under "resources"
+
+``` javascript
+  <script data-th-src="@{/js/profile.js}"></script>
+```
+
 ## Goals Page
 
 ![Goals Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/goals.png)
