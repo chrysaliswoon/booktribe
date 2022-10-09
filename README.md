@@ -144,7 +144,38 @@ As the profile contains quite a number of items, we will need to store the bookI
     }
 ```
 
+When users click on the "Edit Profile" button, they will be directed to a form pre-filled with their existing information which they can then edit. Currently the changes made will only be reflected upon the next sign-in. In the next version update, this will be rectified and when users submit the edit profile button it will reflect the changes immediately.
+
 ![Edit Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/editProfile.png)
+
+``` java
+    //? UPDATE PROFILE
+    @PostMapping(path = "/editUser") 
+    public String editUser(Model model, HttpSession session) {
+
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
+        return "editUser";
+    }
+
+    @PostMapping(path = "/update") 
+    public String updateProfilePage(Model model, HttpSession session, @RequestBody MultiValueMap<String, String> form) {
+        User userDetails = (User) session.getAttribute("userDetails");
+
+        String name = form.getFirst("name");
+        String password = form.getFirst("password");
+        String profile = form.getFirst("profile");
+
+        String email = userDetails.getEmail();
+
+        userSvc.updateProfile(email, "name", name);
+        userSvc.updateProfile(email, "password", password);
+        userSvc.updateProfile(email, "profile", profile);
+
+        model.addAttribute("userDetails", userDetails);
+        return "profile";
+    }
+```
 
 
 ![Delete Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/deleteProfile.png)
