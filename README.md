@@ -26,6 +26,8 @@ This project is my submission for an assignment where we were tasked to design a
 
 ## Login Page
 
+The first page which users will see when they enter the app is the login page. If the user enters an incorrect email / password or if it does not exist, a prompt will appear, and they will not be able to access the app. 
+
 ![Login Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/login.png)
 
 In order to get the values from the Login form, we need to use ```@RequestBody MultiValueMap<String, String> form```. After which, we will get the specific value using ```form.getFirst```. 
@@ -71,9 +73,11 @@ To store the login details of the user, ```HttpSession``` was used to store the 
 
 ## Registration Page
 
+If a new user would like to join the BookTribe, they will head over to the Registration page where they will fill up their particulars to create their own personalised booktribe profile and bookshelf.
+
 ![Registration Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/register.png)
 
-When a user creates an account, we can use RedisInsight to have a quick view of whether the data was saved in the Redis database running in the 'cloud'.
+When a user creates an account, we can use RedisInsight to have a quick view of whether the data was saved in the Redis database running in the 'cloud'. We can also use the CLI to check if it exists. 
 
 ![RedisInsight](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/redisInsight.png)
 
@@ -102,12 +106,43 @@ Similar to the Login Form, we use a POST request to send the information over an
 
 ## Welcome Page
 
+Upon successful login, users will be welcomed by the system. They will then need to click on the book to head into the profile page.
+
 ![Welcome Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/welcome.png)
+
+To detect which user it is, we use the ```HttpSession``` combined with the ```Model``` attribute for Thymeleaf to show the username. 
+
+``` java
+    @GetMapping("/home")
+    public String getHomePage(Model model, HttpSession session) {
+        User userDetails = (User) session.getAttribute("userDetails");
+        String name = userDetails.getName();
+        model.addAttribute("userDetails", userDetails);
+        model.addAttribute("name", name);
+        return "home";
+    }
+```
 
 ## Profile Page
 
+After the user click on the book, their profile page will be loaded with their personal details and bookshelf.
+
 ![Profile Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/profile.png)
 
+As the profile contains quite a number of items, we will need to store the bookIDs and then call it back again in this page using the ```HttpSession```. Based on the Book ID, it will call the [Google Books API](https://developers.google.com/books/docs/v1/using) and load the book relevant details.
+
+``` java
+    @GetMapping(path = "/profile")
+    public String getProfilePage(Model model, HttpSession session) {
+        User userDetails = (User) session.getAttribute("userDetails");
+        String bookID = userDetails.getFavourite();
+        List<Book> bookDetails = bookSvc.bookDetails(bookID);
+        
+        model.addAttribute("shelf", bookDetails);
+        model.addAttribute("userDetails", userDetails);
+        return "profile";
+    }
+```
 
 ![Edit Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/editProfile.png)
 
