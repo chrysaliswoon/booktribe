@@ -25,8 +25,6 @@ p{
 
 }
 
-.headerobjectswrapper{
-}
 
 .subhead{
     text-transform: uppercase;
@@ -254,6 +252,7 @@ p{
     mix-blend-mode: multiply;
     width: 100%;
 }
+
 /*________________________________________________________________________________________________________________________________*/
 /*MEDIAQUERIES*/
 @media only all and (max-width: 1300px) {

@@ -366,11 +366,65 @@ As the poem API stores the poem lines as an Array, we will need to use a For Loo
 
 ## About Page
 
+This was the easiest portion of the whole project as it doesn't require me to call upon any API nor do any of the CRUD functions. The purpose of this page was the practise my aesthetics and also to have fun exploring the CSS and Bootstrap styling. 
+
 ![About Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/about.png)
+
+However, as the whole app relies on being able to toggle back and forth between the User profile, we will need to include the ```HttpSession``` so we can get the current user details and use it for the navigation bar.
+
+``` java
+    //? About Page - Controller
+    @GetMapping(path="/about")
+    public String getAboutPage(Model model,HttpSession session) { 
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
+        return "about";
+    }
+```
 
 ## Search Book Function
 
+This was the trickiest portion in terms of getting data from the API as the [Google Books API](https://developers.google.com/books/docs/v1/using) requires me to drill down to the specific data. 
+
 ![Search Book Function](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/search.png)
+
+After getting the relevant data, I then realised that not all of the books had all of the data. For instance, some books didn't have subtitles, but I was drilling down to search for that data, which causes a 500 error to appear as the program was trying to find a data which did not exist and just stops there. 
+
+``` java
+    //? Search ALL books - Controller
+    @GetMapping(path = "/search")
+    public String getBookResults(Model model, @RequestParam String book, HttpSession session) { 
+        List<Book> bookResults = bookSvc.exploreBooks(book);
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
+        model.addAttribute("book", book.toUpperCase());
+        model.addAttribute("results", bookResults);
+
+        return "explore";
+    }
+
+    //? Search SPECIFIC book by ID - Controller
+    @GetMapping( path="/search/{id}")
+    public String getBookById(Model model, @PathVariable String id, HttpSession session) {
+        List<Book> bookDetails = bookSvc.bookDetails(id);
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
+        model.addAttribute("details", bookDetails);
+        return "book";
+    }
+```
+
+To combat this, I included a conditional statement to check if that particular data exists. If the data doesn't exists, we will create an empty string.
+
+``` java
+    //? Check if the subtitle exists - Service
+    String subtitle;
+    if (!volInfo.containsKey("subtitle")) {
+        subtitle = "no subtitle available";
+    } else {
+        subtitle = volInfo.getString("subtitle");
+    }
+```
 
 ## Custom Error Pages
 
