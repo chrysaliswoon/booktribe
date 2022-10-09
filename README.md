@@ -38,7 +38,7 @@ To store the login details of the user, ```HttpSession``` was used to store the 
 
 
 ``` java
-    //? LOGIN --> HOMEPAGE
+    //? LOGIN --> HOMEPAGE - Controllers
     @PostMapping(path = "/login")
     public String postHomePage(Model model, @RequestBody MultiValueMap<String, String> form, HttpSession session) {
         String email = form.getFirst("email");
@@ -85,6 +85,7 @@ Similar to the Login Form, we use a POST request to send the information over an
 
 
 ``` java
+    //? REGISTER PAGE - Controllers
     @PostMapping(path = "/")
     public String postRegisterPage(Model model, @RequestBody MultiValueMap<String, String> form) {
 
@@ -113,6 +114,7 @@ Upon successful login, users will be welcomed by the system. They will then need
 To detect which user it is, we use the ```HttpSession``` combined with the ```Model``` attribute for Thymeleaf to show the username. 
 
 ``` java
+    //? WELCOME PAGE - Controllers
     @GetMapping("/home")
     public String getHomePage(Model model, HttpSession session) {
         User userDetails = (User) session.getAttribute("userDetails");
@@ -132,6 +134,7 @@ After the user click on the book, their profile page will be loaded with their p
 As the profile contains quite a number of items, we will need to store the bookIDs and then call it back again in this page using the ```HttpSession```. Based on the Book ID, it will call the [Google Books API](https://developers.google.com/books/docs/v1/using) and load the book relevant details.
 
 ``` java
+    //? PROFILE PAGE - Controllers
     @GetMapping(path = "/profile")
     public String getProfilePage(Model model, HttpSession session) {
         User userDetails = (User) session.getAttribute("userDetails");
@@ -149,7 +152,7 @@ When users click on the "Edit Profile" button, they will be directed to a form p
 ![Edit Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/editProfile.png)
 
 ``` java
-    //? UPDATE PROFILE
+    //? UPDATE PROFILE - Controllers
     @PostMapping(path = "/editUser") 
     public String editUser(Model model, HttpSession session) {
 
@@ -182,7 +185,7 @@ If the user wishes to delete their profile, they can click on the "Delete Profil
 ![Delete Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/deleteProfile.png)
 
 ``` java
-    //? DELETE PROFILE
+    //? DELETE PROFILE - Controllers
     @PostMapping(path = "/deleteUser") 
     public String deleteProfilePage(Model model, HttpSession session) {
         User userDetails = (User) session.getAttribute("userDetails");
@@ -246,18 +249,119 @@ In order for Javascript to work, you will need to import the script and make sur
 
 ## Goals Page
 
+As of now, the Goals page is a new area which is not yet completed as of this update. However, upon completion, users will be able to write reviews for books in their own Bookshelf (which is auto-generated upon favouriting the book).
+
 ![Goals Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/goals.png)
+
+To detect the books in the current user's bookshelf, we need get the information through the ```HttpSession``` and then use ```model.addAttribute``` to show the books using Thymeleaf. 
+
+``` java
+    // ? GOALS PAGE  - Controllers
+    @GetMapping(path = "/goals")
+    public String getGoalsPage(Model model,HttpSession session) {
+        User userDetails = (User) session.getAttribute("userDetails");
+        String bookID = userDetails.getFavourite();
+        List<Book> bookDetails = bookSvc.bookDetails(bookID);
+        
+        model.addAttribute("shelf", bookDetails);
+        model.addAttribute("userDetails", userDetails);
+        return "goals";
+    }
+```
+
+Currently this version is not ideal as it requires us to constantly call the [Google Books API](https://developers.google.com/books/docs/v1/using) and load the book relevant details.
 
 ## Tribe Page
 
+As of now, the Goals page is a new area which is not yet completed as of this update. However, upon completion, users will be able to follow other Tribe Members who have the same interest as them, and there will be a community forum for them to chat about their favourite books and topics. 
+
 ![Tribe Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/tribe.png)
+
+Similar to the previous page, in order to get the details of the current user plus the existing users in the Redis Database, we will need to use ```HttpSession``` to get the current user information.
+
+To get all of the existing users, we will call the User Service which will get all of the users from the Redis Database.
+
+``` java
+    // ? TRIBE PAGE - Controllers
+    @GetMapping(path = "/tribe")
+    public String getBookTribe(Model model, HttpSession session) {
+        userSvc.getUsers();
+
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("users", userSvc.getUsers());
+        model.addAttribute("userDetails", userDetails);
+        return "tribe";
+    }
+```
+
+``` java
+    // ? TRIBE PAGE - Service
+    public Set<String> getUsers() {
+        Optional<Set<String>> findUsers = userRepo.findAllUsers();
+        Set<String> payload = findUsers.get();
+
+        return payload;
+    }
+```
+
+``` java
+    //? FIND ALL USERS - Repository
+    public Optional<Set<String>> findAllUsers() {
+        Set<String> allKeys = template.keys("*");
+        return Optional.of(allKeys);
+    }
+```
 
 ## Inspire Page
 
+When users go to the Inspiration section, a random quote and poem will be generated. User will also be able to listen to songs on Spotify through the [embedded Spotify iFrame player](https://developer.spotify.com/documentation/embeds/). 
+
+The quote data is generated from the [Random Quote Generator](https://github.com/lukePeavey/quotable). As of this project development, this API is working and there is currently no limit to the number of API calls you can make to it as a free user.
+
 ![Inspire - Quote](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/inspireQuote.png)
 
+The poem data is generated from the [Random Poem Generator](https://poetrydb.org/index.html). As of this project development, this API is working and there is currently no limit to the number of API calls you can make to it as a free user.
 
 ![Inspire - Poem](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/inspirePoem.png)
+
+As both of them are on a single page, we will use a single controller to call the API through the Service.
+
+``` java
+    //? INSPIRE PAGE - Controller
+    @GetMapping("/inspire")
+    public String getQuotes(Model model, HttpSession session) {
+        List<Quote> poem = quoteSvc.getPoem();
+        List<Quote> quote = quoteSvc.getQuote();
+
+        User userDetails = (User) session.getAttribute("userDetails");
+        model.addAttribute("userDetails", userDetails);
+
+        model.addAttribute("poem", poem);
+        model.addAttribute("quote", quote);
+        return "inspire";
+    }
+```
+
+As the poem API stores the poem lines as an Array, we will need to use a For Loop to loop through the array and then generate it out line by line. 
+
+``` java 
+    //? Poem API - Service
+        JsonArray lines = poem.getJsonArray("lines");
+        
+        List<String> poemContent = new ArrayList<String>();
+
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.getString(i);
+            poemContent.add(line);
+        }
+        
+        List<String> poemLines = new ArrayList<>();
+        
+
+        for (String content: poemContent) {
+            poemLines.add(content);
+        }
+```
 
 
 ## About Page
@@ -281,6 +385,7 @@ In order for Javascript to work, you will need to import the script and make sur
 API Used:
 - [Google Books](https://developers.google.com/books/docs/v1/using)
 - [Random Quote Generator](https://github.com/lukePeavey/quotable)
+- [Random Poem Generator](https://poetrydb.org/index.html)
 
 Styling:
 - [Bootstrap](https://getbootstrap.com/)

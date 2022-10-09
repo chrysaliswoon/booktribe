@@ -59,8 +59,8 @@ public class QuoteService {
 
         String title = poem.getString("title");
         String author = poem.getString("author");
-        JsonArray lines = poem.getJsonArray("lines");
         String lineCount = poem.getString("linecount");
+        JsonArray lines = poem.getJsonArray("lines");
         
         List<String> poemContent = new ArrayList<String>();
 
@@ -75,6 +75,7 @@ public class QuoteService {
         for (String content: poemContent) {
             poemLines.add(content);
         }
+
         poemList.add(Quote.createPoem(title, author, poemLines, lineCount));
 
         return poemList;

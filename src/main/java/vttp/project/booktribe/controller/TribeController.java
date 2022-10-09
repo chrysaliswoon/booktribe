@@ -21,8 +21,6 @@ public class TribeController {
     public String getBookTribe(Model model, HttpSession session) {
         userSvc.getUsers();
 
-        System.out.print( userSvc.getUsers());
-
         User userDetails = (User) session.getAttribute("userDetails");
         model.addAttribute("users", userSvc.getUsers());
         model.addAttribute("userDetails", userDetails);
