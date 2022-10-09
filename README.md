@@ -102,23 +102,40 @@ Similar to the Login Form, we use a POST request to send the information over an
 
 ## Welcome Page
 
+![Welcome Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/welcome.png)
 
 ## Profile Page
 
+![Profile Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/profile.png)
 
+
+![Edit Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/editProfile.png)
+
+
+![Delete Profile](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/deleteProfile.png)
 ## Goals Page
+
+![Goals Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/goals.png)
 
 ## Tribe Page
 
+![Tribe Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/tribe.png)
 
 ## Inspire Page
+
+![Inspire - Quote](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/inspireQuote.png)
+
+
+![Inspire - Poem](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/inspirePoem.png)
 
 
 ## About Page
 
+![About Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/about.png)
 
 ## Search Book Function
 
+![Search Book Function](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/search.png)
 
 ## Custom Error Pages
 
