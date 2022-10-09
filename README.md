@@ -15,7 +15,7 @@ This project is my submission for an assignment where we were tasked to design a
 | :white_check_mark:| Make HTTP request to external RESTFUl API 
 | :white_check_mark:| REST endpoints must not be those that have been discussed or used in class or assessment 
 | :white_check_mark:| Use Bootstrap in your HTML 
-| :white_check_mark:|Redis database must be runnign in the 'cloud'. Can provision an instance from Redis Labs or any other cloud provider
+| :white_check_mark:|Redis database must be running in the 'cloud'. Can provision an instance from Redis Labs or any other cloud provider
 
 
 # Breakdown of the Project
@@ -35,7 +35,7 @@ As the login form checks for several criterias, we will need to use conditional 
 To store the login details of the user, ```HttpSession``` was used to store the details in a session. As HTTP is a stateless protocol, all requests and responses are independent. The server cannot distinguish between new visitors and returning visitors. But sometimes we may need to keep track of client's activity across multiple requests. This is achieved using Session Management.
 
 
-```java
+``` java
     //? LOGIN --> HOMEPAGE
     @PostMapping(path = "/login")
     public String postHomePage(Model model, @RequestBody MultiValueMap<String, String> form, HttpSession session) {
@@ -69,6 +69,58 @@ To store the login details of the user, ```HttpSession``` was used to store the 
 ```
 
 
+## Registration Page
+
+![Registration Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/register.png)
+
+When a user creates an account, we can use RedisInsight to have a quick view of whether the data was saved in the Redis database running in the 'cloud'.
+
+![RedisInsight](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/redisInsight.png)
+
+Similar to the Login Form, we use a POST request to send the information over and store in the Redis Database. To send over all of the information at once, we use a User model to set the specific data to the one indicated by the form submitted. 
+
+
+``` java
+    @PostMapping(path = "/")
+    public String postRegisterPage(Model model, @RequestBody MultiValueMap<String, String> form) {
+
+        String name = form.getFirst("name");
+        String username = form.getFirst("username");
+        String email = form.getFirst("email");
+        String password = form.getFirst("password");
+        String profile = form.getFirst("profile");
+
+        User user = new User(name, username, email, password, profile);
+
+        //? Store data in Redis Database
+        userSvc.createProfile(user);
+
+        return "login";
+    } 
+
+```
+
+## Welcome Page
+
+
+## Profile Page
+
+
+## Goals Page
+
+## Tribe Page
+
+
+## Inspire Page
+
+
+## About Page
+
+
+## Search Book Function
+
+
+## Custom Error Pages
 
 
 

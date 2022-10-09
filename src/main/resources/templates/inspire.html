@@ -89,7 +89,7 @@
       ></iframe>
     </section>
 
-    <section class="quote" data-th-each="q: ${quote}" style="padding: -500px">
+    <section class="quote" data-th-each="q: ${quote}" style="padding: 0px 0px 300px 0px" >
       <article class="container">
         <h1>Quote of the Day</h1>
 
@@ -100,9 +100,7 @@
       </article>
     </section>
 
-    <br>
-
-    <section style="padding: 200px" data-th-each="p: ${poem}" >
+    <section data-th-each="p: ${poem}" >
       <h1 class="poemHeader">Poem of the Day</h1>
       <div class="letter poemHeader">
         <h3 data-th-text="${p.title}"></h3>
