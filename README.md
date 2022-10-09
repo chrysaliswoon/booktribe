@@ -139,6 +139,10 @@ Similar to the Login Form, we use a POST request to send the information over an
 
 ## Custom Error Pages
 
+![404 Error Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/404Error.png)
+
+
+![500 Error Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/500Error.png)
 
 
 # Resources & References
