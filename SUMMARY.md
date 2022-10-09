@@ -17,7 +17,16 @@
 
 ## 👾 User Testing
 
+* [Registration Page](user-testing/registration-page.md)
 * [Login Page](user-testing/login-page.md)
+* [Welcome Page](user-testing/welcome-page.md)
+* [Profile Page](user-testing/profile-page.md)
+* [Goals Page](user-testing/goals-page.md)
+* [Inspiration Page](user-testing/inspiration-page.md)
+* [About Page](user-testing/about-page.md)
+* [Search Books Function](user-testing/search-books-function.md)
+* [Custom Error Pages](user-testing/custom-error-pages.md)
+* [API RestControllers](user-testing/api-restcontrollers.md)
 
 ## 💭 Reflections & Learnings
 
