@@ -1,3 +1,3 @@
 # Welcome Page
 
-<table><thead><tr><th data-type="checkbox">Implemented?</th><th>Requirements</th><th>Instructions</th><th>Expected Results</th></tr></thead><tbody><tr><td>false</td><td></td><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th data-type="checkbox">Implemented?</th><th>Requirements</th><th>Instructions</th><th>Expected Results</th></tr></thead><tbody><tr><td>true</td><td>When user logins, it will go to the homepage and welcome the person</td><td>Login to an existing user account</td><td>User should see their name on the welcome page</td></tr><tr><td>true</td><td>When user clicks on the book, it will go to the profile page</td><td>Click on the animated book</td><td>User will be redirected to their profile page: <a href="https://vttp-booktribe.herokuapp.com/profile">https://vttp-booktribe.herokuapp.com/profile</a></td></tr></tbody></table>
