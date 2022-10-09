@@ -22,3 +22,7 @@ Explanation of RedisJSON
 
 * There will always be features or functions that you will want to implement in your project as you start creating it.&#x20;
 * In my case, I started to add other areas such as the Inspiration area and the Community area, but with the time-frame that was given, I had to focus and prioritise on what I could do and complete to show a MVP of my project.
+
+
+
+_**Special thanks to my study buddies and friends, Kai Kein, Weiyang, Delan, Nigel and Neal for being my emotional support and also giving me loads of valuable coding advice throughout this whole process.**_

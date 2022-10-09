@@ -1,3 +1,3 @@
 # Search Books Function
 
-<table><thead><tr><th data-type="checkbox">Implemented?</th><th>Requirements</th><th>Instructions</th><th>Expected Results</th></tr></thead><tbody><tr><td>false</td><td></td><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th data-type="checkbox">Implemented?</th><th>Requirements</th><th>Instructions</th><th>Expected Results</th></tr></thead><tbody><tr><td>true</td><td>Users are able to search for a book using the search bar</td><td>Search for a book in the search bar<br><br>i.e. "dog"</td><td>User should be directed to a page with the list of books gotten from the Google Books API.</td></tr><tr><td>true</td><td>Users are able to see the details of the book when they click on "View Inside"</td><td>Click on the "View Inside" button</td><td>User should see a detailed summary of the book gotten from the Google Book API when they click on the button.</td></tr></tbody></table>

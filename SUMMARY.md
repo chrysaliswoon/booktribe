@@ -31,4 +31,3 @@
 ## 💭 Reflections & Learnings
 
 * [Reflections](reflections-and-learnings/reflections.md)
-* [Summary & Overview](reflections-and-learnings/summary-and-overview.md)

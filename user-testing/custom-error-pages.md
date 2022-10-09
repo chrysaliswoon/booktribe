@@ -1,3 +1,3 @@
 # Custom Error Pages
 
-<table><thead><tr><th data-type="checkbox">Implemented?</th><th>Requirements</th><th>Instructions</th><th>Expected Results</th></tr></thead><tbody><tr><td>false</td><td></td><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th data-type="checkbox">Implemented?</th><th>Requirements</th><th>Instructions</th><th>Expected Results</th></tr></thead><tbody><tr><td>true</td><td>Custom 404 Error page</td><td>Go to a link that does not exist.<br><br>i.e. "<a href="https://vttp-booktribe.herokuapp.com/blah">https://vttp-booktribe.herokuapp.com/blah</a>"</td><td>A custom 404 error page will appear with clickable links and search bar</td></tr><tr><td>true</td><td>Custom 500 Error page</td><td>Click on the "Favourite" button after searching for a book.</td><td>The page will show a 500 error page</td></tr></tbody></table>
