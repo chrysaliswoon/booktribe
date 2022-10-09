@@ -42,7 +42,7 @@ public class RegisterController {
         //? Store data in Redis Database
         userSvc.createProfile(user);
 
-        return "/login";
+        return "login";
     } 
 
 }

@@ -14,7 +14,7 @@ public class LogoutController {
         session.removeAttribute("userDetails");
         session.invalidate();
         System.out.println("User has been logged out");
-        return "/login";
+        return "login";
     }
 
 }
