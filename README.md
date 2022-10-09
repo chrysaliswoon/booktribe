@@ -426,10 +426,33 @@ To combat this, I included a conditional statement to check if that particular d
     }
 ```
 
+Users are also able to favourite their book by clicking on a button. As of now, they can only save one book due to the limitations of using HashOperations. However, future iterations of this will resolve this. 
+
+``` java
+    //? Favourite a book - Controller
+    @PostMapping(path = "/favourite")
+    public String favouriteBook(Model model, HttpSession session, @RequestBody MultiValueMap<String, String> form) {
+        //? When user click on Favourite button it will get the current book ID
+        String bookID = form.getFirst("favourite");
+
+        //? Gets the existing user details through session
+        User userDetails = (User) session.getAttribute("userDetails");
+        List<String> favouriteBook = bookSvc.addBook(userDetails.getEmail().toString(), bookID);  
+        userDetails.setFavourite(bookID);
+
+        model.addAttribute("shelf", favouriteBook);
+        model.addAttribute("userDetails", userDetails);
+        return "profile";
+    }
+```
+
 ## Custom Error Pages
+
+As some users might accidentally type in an incorrect URL or a page that no longer exists, a custom 404 Error Page was created where it will redirect users to the correct pages.
 
 ![404 Error Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/404Error.png)
 
+A custom 500 error page will appear upon the user trying to submit something which the app is currently not equipped for, or if there is an issue with getting the data from Redis or the API.
 
 ![500 Error Page](https://github.com/chrysaliswoon/booktribe/blob/master/src/main/resources/images/500Error.png)
 
