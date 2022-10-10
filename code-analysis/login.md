@@ -16,8 +16,6 @@ In order to get the values from the Login form, we need to use `@RequestBody Mul
 
 As the login form checks for several criterias, we will need to use conditional statements to check with the Redis Database if the user exists. If it doesn't, the user is unable to login.
 
-To store the login details of the user, `HttpSession` was used to store the details in a session. As HTTP is a stateless protocol, all requests and responses are independent. The server cannot distinguish between new visitors and returning visitors. But sometimes we may need to keep track of client's activity across multiple requests. This is achieved using Session Management.
-
 ```java
  @PostMapping(path = "/login")
     public String postHomePage(Model model, @RequestBody MultiValueMap<String, String> form, HttpSession session) {
@@ -50,9 +48,21 @@ To store the login details of the user, `HttpSession` was used to store the deta
     }
 ```
 
+To store the login details of the user, `HttpSession` was used to store the details in a session. As HTTP is a stateless protocol, all requests and responses are independent. The server cannot distinguish between new visitors and returning visitors. But sometimes we may need to keep track of client's activity across multiple requests. This is achieved using Session Management.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p><a href="https://www.studytonight.com/servlet/httpsession.php">How HttpSession Works</a></p></figcaption></figure>
+
+1. On client's first request, the **Web Container** generates a unique session ID and gives it back to the client with response. This is a temporary session created by web container.
+2. The client sends back the session ID with each request. Making it easier for the web container to identify where the request is coming from.
+3. The **Web Container** uses this ID, finds the matching session with the ID and associates the session with the request.
+
 ### User Service
 
 #### Login Status
+
+To check if the person is able to log in successfully, we create a boolean value which will be returned back to us.&#x20;
+
+If the login is successful, it will return true. But if the login is unsuccessful due to either incorrect password or there isn't such email found in the database, it will return false.
 
 ```java
     public boolean login(String email, String password) {
@@ -74,6 +84,10 @@ To store the login details of the user, `HttpSession` was used to store the deta
     }
 ```
 
+If the boolean returns false, a span text will appear saying that it is an incorrect email or password.
+
+<figure><img src="../.gitbook/assets/Screenshot 2022-10-10 at 8.17.43 AM.png" alt=""><figcaption></figcaption></figure>
+
 #### Check Profile
 
 ```java
@@ -90,7 +104,7 @@ To store the login details of the user, `HttpSession` was used to store the deta
         //? Check if the profile exists in Redist
         String redis_profile = redisValue.get().getProfile();
         
-        //? Check if password is correct
+        //? Check if user has uploaded a profile pic
         if (redis_profile.isBlank()) {
             return false;
         }
@@ -108,3 +122,24 @@ To store the login details of the user, `HttpSession` was used to store the deta
     }
 ```
 
+### User Repository
+
+```java
+    //? FIND SPECIFIC USER
+    public Optional<User> findUserByEmail(String email) {
+        HashOperations<String, String, String> hashOp = template.opsForHash();
+        String redisName = hashOp.get(email, "name");
+        String redisUserName = hashOp.get(email, "username");
+        String redisEmail = hashOp.get(email, "email");
+        String redisPassword = hashOp.get(email, "password");
+        String redisProfile = hashOp.get(email, "profile");
+        String redisBook = hashOp.get(email, "favourite");
+
+
+        User user = new User(redisName, redisUserName, redisEmail, redisPassword, redisProfile, redisBook);
+        
+        if (null == redisEmail)
+            return Optional.empty();
+        return Optional.of(user);
+    }
+```
