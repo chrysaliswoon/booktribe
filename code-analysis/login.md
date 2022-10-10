@@ -90,6 +90,8 @@ If the boolean returns false, a span text will appear saying that it is an incor
 
 #### Check Profile
 
+Similar to the Login status, we use a boolean to check if the user has uploaded a profile picture. If the user has uploaded a profile picture at registration, it will show the image upon login. But if there is no profile picture uploaded, a placeholder image will be given.
+
 ```java
     public boolean checkProfile(String email) {
 
@@ -112,6 +114,20 @@ If the boolean returns false, a span text will appear saying that it is an incor
         return true;
     }
 ```
+
+****
+
+**Example of a user with no profile picture uploaded at the Registration stage:**
+
+<figure><img src="../.gitbook/assets/Screenshot 2022-10-10 at 8.27.49 AM.png" alt=""><figcaption><p>Profile Page - No profile image</p></figcaption></figure>
+
+####
+
+**Example of a user with profile picture uploaded at the Registration stage:**
+
+<figure><img src="../.gitbook/assets/Screenshot 2022-10-10 at 8.29.07 AM (1).png" alt=""><figcaption><p>Profile Page - With profile image</p></figcaption></figure>
+
+
 
 #### User Details
 
