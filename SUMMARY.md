@@ -8,6 +8,7 @@
 
 * [Registration](code-analysis/registration.md)
 * [Login](code-analysis/login.md)
+* [Register](code-analysis/register.md)
 * [Homepage](code-analysis/homepage.md)
 * [Profile](code-analysis/profile.md)
 * [Inspiration](code-analysis/inspiration.md)

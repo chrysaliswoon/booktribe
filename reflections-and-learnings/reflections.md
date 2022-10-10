@@ -13,6 +13,10 @@ During the course of the project, there were a couple of takeaways and thoughts 
 Explanation of RedisJSON
 {% endembed %}
 
+**If you are using :/redirect, then use** [**flashattribute**](https://www.baeldung.com/spring-web-flash-attributes) **rather than model.addattribute**&#x20;
+
+* **Flash attributes are short-lived**. As such, these are stored temporarily in some underlying storage, just before the redirect. They remain available for the subsequent request after redirect, and then they're gone.
+
 **Try not to focus and fixate too much on the design and visual aspects especially at the initial project stage. Make it work first before working on the aesthetics.**
 
 * As someone who is very visual and artistic, there is a tendency for me to focus on the aesthetics of my project, which then takes away time for me to do up the logic.&#x20;
@@ -25,4 +29,4 @@ Explanation of RedisJSON
 
 
 
-_**Special thanks to my study buddies and friends, Kai Kein, Weiyang, Delan, Nigel and Neal for being my emotional support and also giving me loads of valuable coding advice throughout this whole process.**_
+_**Special thanks to my study buddies and friends, Kai Kein, Weiyang, Delan, Nigel and Neal for being my coding buddies and also giving me loads of valuable coding advice throughout this whole process.**_

@@ -44,7 +44,7 @@ Add these additional dependencies to the `pom.xml` file once the Spring Boot app
 
 #### ![](<.gitbook/assets/Screenshot 2022-10-09 at 10.30.06 AM (1).png>)
 
-#### ![](<.gitbook/assets/Screenshot 2022-10-09 at 10.30.14 AM.png>)
+#### ![](<.gitbook/assets/Screenshot 2022-10-09 at 10.30.14 AM (1).png>)
 
 #### Redis Configuration
 
